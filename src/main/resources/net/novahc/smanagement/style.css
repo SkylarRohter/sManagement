@@ -1,3 +1,12 @@
 .root{
-    -fx-background-color: black;
+    -fx-celadon: #b5d6b2ff;
+    -fx-cosmos: #53131eff;
+    -fx-rose: #5a464cff;
+    -fx-lemon: #fffaccff;
+    -fx-vanilla: #ffefbdff;
+
+    -fx-background-color: -fx-vanilla;
+}
+.button{
+    -fx-background-radius: 5;
 }
