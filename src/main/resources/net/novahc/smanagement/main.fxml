@@ -11,7 +11,7 @@
          <children>
             <FlowPane fx:id="buttonPane" prefHeight="537.0" prefWidth="220.0">
                <children>
-                  <Button fx:id="sbButton" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Staff Bulletin" />
+                  <Button fx:id="sbButton" disable="true" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Staff Bulletin" />
                   <Button fx:id="aButton" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Attendence" />
                   <Button fx:id="umButton" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="User Management" />
                   <Button fx:id="sButton" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Settings" />
