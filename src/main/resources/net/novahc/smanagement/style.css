@@ -1,12 +1,29 @@
 .root{
-    -fx-celadon: #b5d6b2ff;
+    -fx-cel: #b5d6b2ff;
     -fx-cosmos: #53131eff;
     -fx-rose: #5a464cff;
     -fx-lemon: #fffaccff;
     -fx-vanilla: #ffefbdff;
 
+    -fx-background-color: white;
+}
+#sidePane{
     -fx-background-color: -fx-vanilla;
 }
-.button{
-    -fx-background-radius: 5;
+#mainPane{
+    -fx-background-color: white;
+}
+.split-pane-divider {
+    /* Slider styles */
+    -fx-background-color: rgba(0, 0, 0, 0.1); /* Set background color */
+    -fx-padding: 1px; /* Set padding */
+}
+.sidebar-buttons{
+    -fx-background-color: -fx-cel;
+    -fx-text-fill: white;
+    -fx-border-color: rgba(0, 0, 0, 0.1);
+    -fx-border-width: 1px;
+}
+.sidebar-buttons:hover{
+    -fx-background-color: #c4dec1;
 }

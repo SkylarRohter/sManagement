@@ -25,6 +25,13 @@
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.gluonhq.attach/util -->
+        <dependency>
+            <groupId>com.gluonhq.attach</groupId>
+            <artifactId>util</artifactId>
+            <version>4.0.19</version>
+            <scope>runtime</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
