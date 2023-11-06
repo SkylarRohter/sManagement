@@ -27,3 +27,15 @@
 .sidebar-buttons:hover{
     -fx-background-color: #c4dec1;
 }
+#staffPane{
+    -fx-background-color: red;
+}
+#attPane{
+    -fx-background-color: blue;
+}
+#umPane{
+    -fx-background-color: yellow;
+}
+#setPane{
+    -fx-background-color: green;
+}
