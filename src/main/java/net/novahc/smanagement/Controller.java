@@ -49,16 +49,23 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // FXML element array inits
+        buttons = new Button[]{sbButton, aButton, umButton, sButton};
+        windowPanes = new Pane[]{staffPane, attPane, umPane, setPane};
+
         // Bind the X,Y Coordinates of the buttonPane (flow) to the AnchorPane within sidePane
         buttonPane.prefWidthProperty().bind(sidePane.widthProperty());
         buttonPane.prefHeightProperty().bind(sidePane.heightProperty());
+
         // Bind Buttons to buttonPane;
-        bindButton(sbButton);
-        bindButton(aButton);
-        bindButton(umButton);
-        bindButton(sButton);
-        buttons = new Button[]{sbButton, aButton, umButton, sButton};
-        windowPanes = new Pane[]{staffPane, attPane, umPane, setPane};
+        for(Button b: buttons){
+            bindButton(b);
+        }
+        // Bind windows
+        for(Pane w :windowPanes){
+            bindWindow(w);
+        }
+
         for(Button button : buttons){
             button.setOnAction(event -> handleButtonClick((Button) event.getSource()));
         }
@@ -69,6 +76,10 @@ public class Controller implements Initializable {
         b.prefWidthProperty().bind(sidePane.widthProperty());
         b.getStyleClass().add("sidebar-buttons");
     }
+    public void bindWindow(Pane p){
+        p.prefWidthProperty().bind(mainPane.widthProperty());
+        p.getStyleClass().add("windows");
+    }
 
     private void handleButtonClick(Button clickedButton) {
         // Enable the previously disabled button
@@ -78,9 +89,14 @@ public class Controller implements Initializable {
         for (int i = 0; i < buttons.length; i++) {
             if (buttons[i] == clickedButton) {
                 currentlyEnabledIndex = i;
+
+                //set selected button to disabled to prevent double registry
                 buttons[i].setDisable(true);
+
+                //set selected pane to visible
                 windowPanes[i].setVisible(true);
             }
+            // Set all other windows other than the selected to invisible
             for(int j = 0; j < windowPanes.length; j++){
                 if(j != currentlyEnabledIndex){
                     windowPanes[j].setVisible(false);
