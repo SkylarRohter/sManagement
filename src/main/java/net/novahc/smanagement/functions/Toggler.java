@@ -19,10 +19,6 @@ public class Toggler {
     }
     public void toggleButton(Button button){
         boolean toggled = button.isDisabled();
-        if(toggled){
-            button.setDisable(true);
-        } else {
-            button.setDisable(false);
-        }
+        button.setDisable(toggled);
     }
 }

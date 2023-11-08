@@ -4,20 +4,25 @@ package net.novahc.smanagement;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import net.novahc.smanagement.functions.TableManager;
+import net.novahc.smanagement.functions.Users.Student;
 
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.Flow;
 
 public class Controller implements Initializable {
     // FIELDS
     private int currentlyEnabledIndex = 0;
     private Button[] buttons;
-    private Pane[] windowPanes;
+    private FlowPane[] windowPanes;
 
     // MAIN PANES
     @FXML
@@ -29,13 +34,11 @@ public class Controller implements Initializable {
 
     // SECONDARY PANES
     @FXML
-    private Pane staffPane;
+    private FlowPane staffPane;
     @FXML
-    private Pane attPane;
+    private FlowPane umPane;
     @FXML
-    private Pane umPane;
-    @FXML
-    private Pane setPane;
+    private FlowPane setPane;
 
     // SIDEBAR BUTTONS
     @FXML
@@ -47,11 +50,25 @@ public class Controller implements Initializable {
     @FXML
     private Button sButton;
 
+    //ATTENDANCE PANE
+    @FXML
+    private FlowPane attPane;
+    @FXML
+    private TableView<Student> tableView;
+    @FXML
+    TableColumn<Student, String> name;
+    @FXML
+    TableColumn<Student, Integer> age;
+    @FXML
+    TableColumn<Student, Boolean> present;
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // FXML element array inits
         buttons = new Button[]{sbButton, aButton, umButton, sButton};
-        windowPanes = new Pane[]{staffPane, attPane, umPane, setPane};
+        windowPanes = new FlowPane[]{staffPane, attPane, umPane, setPane};
 
         // Bind the X,Y Coordinates of the buttonPane (flow) to the AnchorPane within sidePane
         buttonPane.prefWidthProperty().bind(sidePane.widthProperty());
@@ -62,15 +79,14 @@ public class Controller implements Initializable {
             bindButton(b);
         }
         // Bind windows
-        for(Pane w :windowPanes){
+        for(FlowPane w :windowPanes){
             bindWindow(w);
         }
 
         for(Button button : buttons){
             button.setOnAction(event -> handleButtonClick((Button) event.getSource()));
         }
-
-
+        new TableManager(tableView).initTable(name,age,present);
     }
     public void bindButton(Button b){
         b.prefWidthProperty().bind(sidePane.widthProperty());

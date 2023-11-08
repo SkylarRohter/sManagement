@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Button functionality implemented.">
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Main window binds and remove redundancies">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/StudentManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Toggler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Toggler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +49,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -71,6 +81,23 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/private/var/folders/lz/c_hs1_dn2fb7vh0jjb64_tsm0000gn/T/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="4cb922ce-ec29-41b6-97ca-be4d8ea8cabb" />
+        <option name="reportName" value="sManagement/qodana/2023-11-08" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/private/var/folders/lz/c_hs1_dn2fb7vh0jjb64_tsm0000gn/T/qodana_output/qodana.sarif.json" reportGuid="4cb922ce-ec29-41b6-97ca-be4d8ea8cabb" reportId="sManagement/qodana/2023-11-08" />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement" />
@@ -100,7 +127,7 @@
       <workItem from="1697569281576" duration="3107000" />
       <workItem from="1697745850640" duration="1956000" />
       <workItem from="1698948821808" duration="25000" />
-      <workItem from="1698952189105" duration="14486000" />
+      <workItem from="1698952189105" duration="26336000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -134,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699289390832</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Main window binds and remove redundancies">
+      <option name="closed" value="true" />
+      <created>1699459352867</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699459352867</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +191,7 @@
     <MESSAGE value="Introduced functional sidebar with adjustable size and buttons." />
     <MESSAGE value="Added toggleable buttons" />
     <MESSAGE value="Button functionality implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="Button functionality implemented." />
+    <MESSAGE value="Main window binds and remove redundancies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main window binds and remove redundancies" />
   </component>
 </project>
