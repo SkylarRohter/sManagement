@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Main window binds and remove redundancies">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/StudentManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users/Student.java" afterDir="false" />
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Tabled setup and styled. Added Student.java and StudentManager.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/databse.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Toggler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Toggler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,12 +27,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "SkylarRohter"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SkylarRohter&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -61,26 +56,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_directory_selection": "/Users/skylarrohter/IdeaProjects/sManagement/src/main/java/net/novahc/smanagement",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/skylarrohter/IdeaProjects/sManagement/src/main/java/net/novahc/smanagement&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="QodanaHighlightedReportService">
     <option name="localRunNotPublishedPersistedInfo">
       <LocalReportPersistedInfo>
@@ -127,7 +122,9 @@
       <workItem from="1697569281576" duration="3107000" />
       <workItem from="1697745850640" duration="1956000" />
       <workItem from="1698948821808" duration="25000" />
-      <workItem from="1698952189105" duration="26336000" />
+      <workItem from="1698952189105" duration="28007000" />
+      <workItem from="1699482621531" duration="15000" />
+      <workItem from="1699482646124" duration="77000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -169,11 +166,22 @@
       <option name="project" value="LOCAL" />
       <updated>1699459352867</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Tabled setup and styled. Added Student.java and StudentManager.java">
+      <option name="closed" value="true" />
+      <created>1699480355964</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699480355964</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.db" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -192,6 +200,7 @@
     <MESSAGE value="Added toggleable buttons" />
     <MESSAGE value="Button functionality implemented." />
     <MESSAGE value="Main window binds and remove redundancies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Main window binds and remove redundancies" />
+    <MESSAGE value="Tabled setup and styled. Added Student.java and StudentManager.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tabled setup and styled. Added Student.java and StudentManager.java" />
   </component>
 </project>
