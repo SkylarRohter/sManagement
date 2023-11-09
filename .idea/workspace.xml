@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Added SQLite database">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-j-8.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" afterDir="false" />
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Connected and switched to MYSql database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/databse.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +72,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
@@ -135,7 +134,7 @@
       <workItem from="1699482621531" duration="15000" />
       <workItem from="1699482646124" duration="77000" />
       <workItem from="1699482726439" duration="649000" />
-      <workItem from="1699504920826" duration="1497000" />
+      <workItem from="1699504920826" duration="2710000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -193,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699482775541</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Connected and switched to MYSql database">
+      <option name="closed" value="true" />
+      <created>1699506650770</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699506650770</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +228,7 @@
     <MESSAGE value="Main window binds and remove redundancies" />
     <MESSAGE value="Tabled setup and styled. Added Student.java and StudentManager.java" />
     <MESSAGE value="Added SQLite database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SQLite database" />
+    <MESSAGE value="Connected and switched to MYSql database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Connected and switched to MYSql database" />
   </component>
 </project>

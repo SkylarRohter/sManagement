@@ -1,4 +1,4 @@
-package net.novahc.smanagement.functions;
+package net.novahc.smanagement.Database;
 
 import net.novahc.smanagement.functions.Users.Student;
 
@@ -8,7 +8,7 @@ public class StudentManager {
     ArrayList<Student> students;
     public StudentManager(){
         students = new ArrayList<>();
-
+        students.add(new Student())
         //TEST STUDENTS ADDITION
         students.add(new Student("Skylar",12,true));
         students.add(new Student("Kurt",12,true));

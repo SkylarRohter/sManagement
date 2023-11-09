@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import net.novahc.smanagement.Database.StudentManager;
 import net.novahc.smanagement.functions.Users.Student;
 
 public class TableManager {
