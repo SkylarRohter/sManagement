@@ -1,4 +1,5 @@
 package net.novahc.smanagement.Database;
+import java.sql.*;
 
 public class Database {
     public Database(){

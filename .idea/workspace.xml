@@ -7,9 +7,7 @@
     <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Connected and switched to MYSql database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +132,7 @@
       <workItem from="1699482621531" duration="15000" />
       <workItem from="1699482646124" duration="77000" />
       <workItem from="1699482726439" duration="649000" />
-      <workItem from="1699504920826" duration="2710000" />
+      <workItem from="1699504920826" duration="2835000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -200,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699506650770</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Connected and switched to MYSql database">
+      <option name="closed" value="true" />
+      <created>1699555991512</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699555991512</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
