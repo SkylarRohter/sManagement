@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Application extends javafx.application.Application {

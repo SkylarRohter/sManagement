@@ -8,14 +8,10 @@ public class StudentManager {
     ArrayList<Student> students;
     public StudentManager(){
         students = new ArrayList<>();
-        students.add(new Student());
-        //TEST STUDENTS ADDITION
-        students.add(new Student("Skylar",12,true));
-        students.add(new Student("Kurt",12,true));
-        students.add(new Student("Ryder",10,false));
-        students.add(new Student("John",11,false));
-        students.add(new Student("Biden",9,false));
-
+        Database db = new Database();
+        for(int i = 1; i < db.getIds().size(); i++){
+            students.add(new Student(db.getUsers().get(i),db.getGrades().get(i),false));
+        }
     }
     public void addStudent(String name, int grade){
         students.add(new Student(name, grade, false));
