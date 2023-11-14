@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Connected and switched to MYSql database">
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Finished functionality of attendance buttons">
       <change afterPath="$PROJECT_DIR$/todo.todo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +118,7 @@
       <workItem from="1699482646124" duration="77000" />
       <workItem from="1699482726439" duration="649000" />
       <workItem from="1699504920826" duration="2835000" />
-      <workItem from="1699556118733" duration="21338000" />
+      <workItem from="1699556118733" duration="21482000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -214,7 +208,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699583299634</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Finished functionality of attendance buttons">
+      <option name="closed" value="true" />
+      <created>1699990994059</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699990994059</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Finished functionality of attendance buttons">
+      <option name="closed" value="true" />
+      <created>1699991047640</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699991047640</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +253,7 @@
     <MESSAGE value="Tabled setup and styled. Added Student.java and StudentManager.java" />
     <MESSAGE value="Added SQLite database" />
     <MESSAGE value="Connected and switched to MYSql database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connected and switched to MYSql database" />
+    <MESSAGE value="Finished functionality of attendance buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished functionality of attendance buttons" />
   </component>
 </project>
