@@ -49,40 +49,46 @@
 }
 
 /* ATTENDANCE */
-.table-view .column-header-background .filler {
-    -fx-background-color: transparent;
-}
-.table-view .corner {
-    -fx-background-color: transparent;
-}
-.table-view .column-header-background{
-    -fx-background-color: #E8EEF2;
-    -fx-background-radius: 7px 7px 0px 0px;
-    -fx-padding: 0 0 5px 0;
-}
-.table-view .column-header {
-    -fx-background-color: transparent;
-}
-.table-view .table-cell{
-    -fx-border-color: transparent;
-    -fx-padding: 2 0 2 10px;
-}
-.table-row-cell:hover {
-    -fx-background-color: #e8eef2;
-    -fx-text-background-color: red;
-}
-.table-row-cell:odd{
-    -fx-background-color: rgba(232, 238, 242, 0.11);
-    -fx-text-background-color: black;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em;
-}
-.table-row-cell:even{
-    -fx-background-color: transparent;
-    -fx-text-background-color: black;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em;
-}
+/*.table-view .column-header-background .filler {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.table-view .corner {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.table-view .column-header-background{*/
+/*    -fx-background-color: #E8EEF2;*/
+/*    -fx-background-radius: 7px 7px 0px 0px;*/
+/*    -fx-padding: 0 0 5px 0;*/
+/*}*/
+/*.table-view .column-header {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.table-view .table-cell{*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-padding: 2 0 2 10px;*/
+/*}*/
+/*.table-row-cell:hover {*/
+/*    -fx-background-color: #e8eef2;*/
+/*    -fx-text-background-color: red;*/
+/*}*/
+/*.table-row-cell:odd{*/
+/*    -fx-background-color: rgba(232, 238, 242, 0.11);*/
+/*    -fx-text-background-color: black;*/
+/*    -fx-background-insets: 0, 0 0 1 0;*/
+/*    -fx-padding: 0.0em;*/
+/*}*/
+/*.table-row-cell:even{*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-text-background-color: black;*/
+/*    -fx-background-insets: 0, 0 0 1 0;*/
+/*    -fx-padding: 0.0em;*/
+/*}*/
+
+
+
 #age{
     -fx-text-fill: green;
+}
+#dialoguePane{
+    -fx-background-color: white;
 }

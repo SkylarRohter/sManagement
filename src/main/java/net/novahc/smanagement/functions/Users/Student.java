@@ -11,6 +11,7 @@ public class Student {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
@@ -44,5 +45,8 @@ public class Student {
     }
     public BooleanProperty presentProperty() {
         return new SimpleBooleanProperty(present);
+    }
+    public String toString() {
+        return getName()+" "+getGrade();
     }
 }

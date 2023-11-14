@@ -8,14 +8,18 @@ import javafx.scene.control.TableView;
 import net.novahc.smanagement.Database.StudentManager;
 import net.novahc.smanagement.functions.Users.Student;
 
+import java.util.Arrays;
+
 public class TableManager {
     private TableView<Student> table;
-    public TableManager(TableView<Student> table){
+    private StudentManager studentManager;
+
+    public TableManager(TableView<Student> table, StudentManager studentManager){
         this.table = table;
         table = new TableView<Student>();
+        this.studentManager = studentManager;
     }
-    public void initTable(TableColumn<Student, String> nameColumn, TableColumn<Student, Integer> gradeColumn, TableColumn<Student, Boolean> presentColumn){
-
+    public void init(TableColumn<Student, String> nameColumn, TableColumn<Student, Integer> gradeColumn, TableColumn<Student, Boolean> presentColumn){
         nameColumn.setCellValueFactory(data ->
                 Bindings.createStringBinding(() -> data.getValue().getName())
         );
@@ -25,7 +29,6 @@ public class TableManager {
         presentColumn.setCellValueFactory(data ->
                 Bindings.createObjectBinding(() -> data.getValue().presentProperty().get(), data.getValue().presentProperty())
         );
-
         if (!table.getColumns().contains(nameColumn)) {
             table.getColumns().add(nameColumn);
         }
@@ -35,11 +38,12 @@ public class TableManager {
         if (!table.getColumns().contains(presentColumn)) {
             table.getColumns().add(presentColumn);
         }
-
         ObservableList<Student> data = FXCollections.observableArrayList();
-        StudentManager studentManager = new StudentManager();
+        studentManager.init();
         data.addAll(studentManager.getStudents());
-
         table.setItems(data);
+
+    }
+    public void togglePresence(){
     }
 }
