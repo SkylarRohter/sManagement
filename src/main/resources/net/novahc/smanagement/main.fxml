@@ -6,7 +6,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <SplitPane dividerPositions="0.25" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="919.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.novahc.smanagement.Controller">
   <items>
@@ -33,7 +32,7 @@
     <AnchorPane fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="613.0">
          <children>
             <FlowPane fx:id="staffPane" prefHeight="606.0" prefWidth="687.0" />
-            <FlowPane fx:id="attPane" prefHeight="606.0" prefWidth="687.0">
+            <FlowPane fx:id="attPane" prefHeight="606.0" prefWidth="687.0" visible="false">
                <children>
                   <TableView fx:id="tableView" prefHeight="606.0" prefWidth="395.0">
                     <columns>
@@ -63,9 +62,9 @@
                   </VBox>
                </children>
             </FlowPane>
-            <FlowPane fx:id="umPane" prefHeight="606.0" prefWidth="687.0" visible="false">
+            <FlowPane fx:id="umPane" prefHeight="606.0" prefWidth="687.0">
                <children>
-                  <TableView prefHeight="606.0" prefWidth="210.0">
+                  <TableView prefHeight="606.0" prefWidth="286.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
                       <TableColumn prefWidth="75.0" text="C2" />
@@ -74,19 +73,56 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
+                  <AnchorPane prefHeight="606.0" prefWidth="401.0">
+                     <children>
+                        <FlowPane prefHeight="202.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane fx:id="addUserPane" prefHeight="200.0" prefWidth="220.0">
+                                 <children>
+                                    <Label layoutX="85.0" layoutY="14.0" text="Add User" underline="true" />
+                                    <Button fx:id="addUserButton" layoutX="85.0" layoutY="161.0" mnemonicParsing="false" onAction="#onAddUserButtonClick" text="Add" />
+                                    <TextField fx:id="addUserNameField" layoutX="36.0" layoutY="49.0" promptText="Name (fLast)" />
+                                    <TextField fx:id="addUserGradeField" layoutX="36.0" layoutY="101.0" promptText="Grade (6-12)" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="updateUserPane" prefHeight="200.0" prefWidth="220.0">
+                                 <children>
+                                    <Label layoutX="75.0" layoutY="14.0" text="Update User" underline="true" />
+                                    <Button fx:id="updateUserButton" layoutX="81.0" layoutY="159.0" mnemonicParsing="false" text="Update" />
+                                    <TextField fx:id="updateUserNameField" layoutX="36.0" layoutY="48.0" promptText="Name+Grade (jDoe-12)" />
+                                    <TextField fx:id="updateUserGradeField" layoutX="36.0" layoutY="100.0" prefHeight="26.0" prefWidth="152.0" promptText="New Name/Grade" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="removeUserPane" prefHeight="207.0" prefWidth="220.0">
+                                 <children>
+                                    <Label layoutX="69.0" layoutY="13.0" text="Remove User" underline="true" />
+                                    <Button fx:id="removeUserButton" layoutX="85.0" layoutY="161.0" mnemonicParsing="false" text="Remove" />
+                                    <TextField fx:id="removeUserNameField" layoutX="36.0" layoutY="48.0" promptText="Name (fLast)" />
+                                    <TextField fx:id="removeUserGradeField" layoutX="36.0" layoutY="100.0" prefHeight="26.0" prefWidth="152.0" promptText="Grade (6-12)" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </FlowPane>
             <FlowPane fx:id="setPane" prefHeight="606.0" prefWidth="687.0" visible="false" />
-            <AnchorPane fx:id="dialoguePane" layoutX="100.0" layoutY="150.0" prefHeight="303.0" prefWidth="469.0" visible="false">
+            <AnchorPane fx:id="dialoguePane" layoutX="174.0" layoutY="178.0" prefHeight="178.0" prefWidth="342.0" visible="false">
                <children>
-                  <TextField layoutX="154.0" layoutY="104.0" />
-                  <Slider blockIncrement="1.0" layoutX="132.0" layoutY="180.0" majorTickUnit="9.0" max="12.0" min="6.0" minorTickCount="8" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="22.0" prefHeight="43.0" prefWidth="96.0" text="ADD USER">
-                     <font>
-                        <Font name="Arial" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="289.0" layoutY="190.0" prefHeight="27.0" prefWidth="33.0" />
+                  <AnchorPane fx:id="confirmPane" prefHeight="178.0" prefWidth="342.0" visible="false">
+                     <children>
+                        <Label layoutX="106.0" layoutY="34.0" text="Confirm Password" underline="true" />
+                        <PasswordField fx:id="confirmPasswordField" layoutX="88.0" layoutY="76.0" promptText="Password" />
+                        <Button fx:id="confirmPasswordButton" layoutX="85.0" layoutY="116.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" text="Confirm" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="promptPane" prefHeight="178.0" prefWidth="342.0" visible="false">
+                     <children>
+                        <Label fx:id="promptLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="42.0" prefHeight="18.0" prefWidth="343.0" text="Confirm Password" underline="true" />
+                        <Button fx:id="promptButton" layoutX="96.0" layoutY="113.0" mnemonicParsing="false" onAction="#onPromptButtonClick" prefHeight="31.0" prefWidth="158.0" text="Confirm" />
+                     </children>
+                  </AnchorPane>
                </children>
                <effect>
                   <DropShadow />

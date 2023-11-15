@@ -6,9 +6,15 @@ import java.util.ArrayList;
 
 public class StudentManager {
     private ArrayList<Student> students;
+
+    private Database db;
+    public Database getDb() {
+        return db;
+    }
+
     public void init(){
         students = new ArrayList<>();
-        Database db = new Database();
+        db = new Database();
         for(int i = 1; i < db.getIds().size(); i++){
             students.add(new Student(db.getUsers().get(i),db.getGrades().get(i),true));
         }

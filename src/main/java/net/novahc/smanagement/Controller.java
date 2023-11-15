@@ -19,6 +19,8 @@ import net.novahc.smanagement.functions.Users.Student;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.concurrent.Flow;
 
@@ -28,6 +30,7 @@ public class Controller implements Initializable {
     private Button[] buttons;
     private FlowPane[] windowPanes;
     private StudentManager studentManager;
+    private TableManager tableManager;
 
     // MAIN PANES
     @FXML private AnchorPane mainPane;
@@ -58,8 +61,32 @@ public class Controller implements Initializable {
 
 
     // DIALOGUE PANE
-    @FXML
-    private AnchorPane dialoguePane;
+    @FXML private AnchorPane dialoguePane;
+    @FXML private AnchorPane confirmPane;
+    @FXML private PasswordField confirmPasswordField;
+    @FXML private Button confirmPasswordButton;
+
+    @FXML private AnchorPane promptPane;
+    @FXML private Label promptLabel;
+    @FXML private Button promptButton;
+
+
+
+    //UserManagement Pane
+    @FXML private AnchorPane addUserPane;
+    @FXML private TextField addUserNameField;
+    @FXML private TextField addUserGradeField;
+    @FXML private Button addUserButton;
+
+    @FXML private AnchorPane updateUserPane;
+    @FXML private TextField updateUserNameField;
+    @FXML private TextField updateUserGradeField;
+    @FXML private Button updateUserButton;
+
+    @FXML private AnchorPane removeUserPane;
+    @FXML private TextField removeUserNameField;
+    @FXML private TextField removeUserGradeField;
+    @FXML private Button removeUserButton;
 
 
 
@@ -86,7 +113,7 @@ public class Controller implements Initializable {
             button.setOnAction(event -> handleButtonClick((Button) event.getSource()));
         }
         studentManager = new StudentManager();
-        TableManager tableManager = new TableManager(tableView, studentManager);
+        tableManager = new TableManager(tableView, studentManager);
         tableManager.init(name,age,present);
     }
     public void bindButton(Button b){
@@ -121,6 +148,19 @@ public class Controller implements Initializable {
             }
         }
     }
+    private void invokePromptPane(String labelText, String buttonText){
+        dialoguePane.setVisible(true);
+        confirmPane.setVisible(false);
+        promptPane.setVisible(true);
+
+        promptLabel.setText(labelText);
+        promptButton.setText(buttonText);
+    }
+
+    //EVENT HANDLERS
+    public void onPromptButtonClick(){
+        dialoguePane.setVisible(false);
+    }
     public void onToggleIsPresentClick(){
         studentManager.setPresence(tableView.getSelectionModel().getSelectedIndex());
         tableView.refresh();
@@ -136,5 +176,28 @@ public class Controller implements Initializable {
             student.setPresent(false);
         }
         tableView.refresh();
+    }
+    public void onAddUserButtonClick(){
+        if(!Objects.equals(addUserNameField.getText(), "") && !Objects.equals(addUserNameField.getText(), "")) {
+            String name = addUserNameField.getText();
+            int grade = Integer.parseInt(addUserGradeField.getText());
+
+            //Clear Table and Data
+            tableManager.getTable().getItems().removeAll();
+            tableManager.getData().removeAll(studentManager.getStudents());
+
+            //Insert Record into Database and Array
+            studentManager.getDb().insertRecord(name,grade);
+            studentManager.addStudent(name,grade);
+
+            //Re-add to table and database
+            System.out.println(studentManager.getStudents());
+            tableManager.getData().addAll(studentManager.getStudents());
+            tableManager.getTable().setItems(tableManager.getData());
+
+        } else {
+            System.out.println("Empty");
+            invokePromptPane("Please fill in the boxes.", "Okay");
+        }
     }
 }

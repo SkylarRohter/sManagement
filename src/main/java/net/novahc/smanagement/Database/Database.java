@@ -19,6 +19,13 @@ public class Database {
     public ArrayList<Integer> getGrades(){
         return grades;
     }
+    private int lastId;
+    public void addUser(String name, int grade){
+        lastId++;
+        getIds().add(lastId);
+        getUsers().add(name);
+        getGrades().add(grade);
+    }
 
     public Database(){
         ids = new ArrayList<>();
@@ -31,7 +38,6 @@ public class Database {
         String jdbcUrl = "jdbc:mysql://localhost:3306/smanagement";
         String username = "root";
         String password = "Theyellowapple";
-
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
              Statement statement = connection.createStatement()) {
@@ -49,6 +55,44 @@ public class Database {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error connecting to database.");
+        }
+        lastId = getIds().get(getIds().size()-1)+1;
+    }
+    public void insertRecord(String name, int grade){
+        String jdbcUrl = "jdbc:mysql://localhost:3306/smanagement";
+        String username = "root";
+        String password = "Theyellowapple";
+
+        String sql = "INSERT INTO users (id, name, grade) VALUES (?, ?, ?);";
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, lastId);
+            preparedStatement.setString(2,name);
+            preparedStatement.setInt(3, grade);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Data inserted successfully!");
+                addUser(name,grade);
+            } else {
+                System.out.println("Failed to insert data.");
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+
+    }
+    public void printSQLException(SQLException ex){
+        for(Throwable e: ex){
+            e.printStackTrace(System.err);
+            System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+            System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+            System.err.println("Message: " + e.getMessage());
+            Throwable t = e.getCause();
+            while(t != null){
+                System.out.println("Cause: " + t);
+                t = t.getCause();
+            }
         }
     }
 }

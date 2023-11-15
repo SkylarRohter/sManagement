@@ -12,11 +12,22 @@ import java.util.Arrays;
 
 public class TableManager {
     private TableView<Student> table;
+    public TableView<Student> getTable() {
+        return table;
+    }
+
     private StudentManager studentManager;
+    private ObservableList<Student> data;
+
+    public ObservableList<Student> getData() {
+        return data;
+    }
+
 
     public TableManager(TableView<Student> table, StudentManager studentManager){
         this.table = table;
         table = new TableView<Student>();
+        data = FXCollections.observableArrayList();
         this.studentManager = studentManager;
     }
     public void init(TableColumn<Student, String> nameColumn, TableColumn<Student, Integer> gradeColumn, TableColumn<Student, Boolean> presentColumn){
@@ -38,7 +49,6 @@ public class TableManager {
         if (!table.getColumns().contains(presentColumn)) {
             table.getColumns().add(presentColumn);
         }
-        ObservableList<Student> data = FXCollections.observableArrayList();
         studentManager.init();
         data.addAll(studentManager.getStudents());
         table.setItems(data);

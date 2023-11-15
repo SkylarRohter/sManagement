@@ -84,7 +84,18 @@
 /*    -fx-padding: 0.0em;*/
 /*}*/
 
-
+#addUserPane{
+    -fx-background-color: white;
+    -fx-border-color: -fx-timberwolf;
+}
+#updateUserPane{
+    -fx-background-color: white;
+    -fx-border-color: -fx-timberwolf;
+}
+#removeUserPane{
+    -fx-background-color: white;
+    -fx-border-color: -fx-timberwolf;
+}
 
 #age{
     -fx-text-fill: green;
