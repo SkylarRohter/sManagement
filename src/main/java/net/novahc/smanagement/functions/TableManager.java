@@ -54,6 +54,4 @@ public class TableManager {
         table.setItems(data);
 
     }
-    public void togglePresence(){
-    }
 }

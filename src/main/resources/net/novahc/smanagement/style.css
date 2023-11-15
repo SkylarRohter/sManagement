@@ -26,6 +26,15 @@
     -fx-background-color: rgba(0, 0, 0, 0.1); /* Set background color */
     -fx-padding: 1px; /* Set padding */
 }
+.button{
+    -fx-background-color: -fx-grayn;
+    -fx-text-fill: -fx-onyx;
+    -fx-border-color: rgba(0, 0, 0, 0.1);
+    -fx-border-width: 1px;
+}
+.button:hover{
+    -fx-background-color: rgba(119, 182, 234, 0.17);
+}
 .sidebar-buttons{
     -fx-background-color: -fx-grayn;
     -fx-text-fill: -fx-onyx;
@@ -103,3 +112,8 @@
 #dialoguePane{
     -fx-background-color: white;
 }
+
+#presentChart{
+    -fx-bar-fill: -fx-argentinian-blue;
+}
+.default-color0.chart-bar { -fx-bar-fill: -fx-argentinian-blue;}

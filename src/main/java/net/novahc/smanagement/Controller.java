@@ -1,36 +1,35 @@
 package net.novahc.smanagement;
 
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.Chart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.stage.Popup;
 import net.novahc.smanagement.Database.StudentManager;
 import net.novahc.smanagement.functions.TableManager;
 import net.novahc.smanagement.functions.Users.Student;
+import net.novahc.smanagement.functions.charts.ChartManager;
 
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.concurrent.Flow;
 
 public class Controller implements Initializable {
     // FIELDS
     private int currentlyEnabledIndex = 0;
     private Button[] buttons;
     private FlowPane[] windowPanes;
+
+    //MANAGERS
     private StudentManager studentManager;
     private TableManager tableManager;
+    private ChartManager chartManager;
 
     // MAIN PANES
     @FXML private AnchorPane mainPane;
@@ -58,6 +57,9 @@ public class Controller implements Initializable {
     @FXML private Button toggleIsPresent;
     @FXML private Button updateTable;
     @FXML private Button resetDay;
+
+    @FXML private PieChart pieChart;
+    @FXML private BarChart<String,Number> presentChart;
 
 
     // DIALOGUE PANE
@@ -113,9 +115,19 @@ public class Controller implements Initializable {
             button.setOnAction(event -> handleButtonClick((Button) event.getSource()));
         }
         studentManager = new StudentManager();
+
         tableManager = new TableManager(tableView, studentManager);
         tableManager.init(name,age,present);
+
+        chartManager = new ChartManager();
+        chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
     }
+    //UPDATERS
+    public void updateChart(BarChart<String,Number> chart){
+        chartManager.updateBarChart(presentChart, studentManager.getStudentTotals());
+    }
+
+    //BINDING
     public void bindButton(Button b){
         b.prefWidthProperty().bind(sidePane.widthProperty());
         b.getStyleClass().add("sidebar-buttons");
@@ -162,8 +174,13 @@ public class Controller implements Initializable {
         dialoguePane.setVisible(false);
     }
     public void onToggleIsPresentClick(){
-        studentManager.setPresence(tableView.getSelectionModel().getSelectedIndex());
-        tableView.refresh();
+        if(tableView.getSelectionModel().getSelectedIndex()!=-1) {
+            studentManager.setPresence(tableView.getSelectionModel().getSelectedIndex());
+            tableView.getSelectionModel().clearSelection();
+            tableView.refresh();
+        } else{
+            invokePromptPane("Please highlight a student.", "Okay");
+        }
     }
     public void onUpdateTableClick(){
         for(Student student : studentManager.getStudents()){
@@ -196,8 +213,8 @@ public class Controller implements Initializable {
             tableManager.getTable().setItems(tableManager.getData());
 
         } else {
-            System.out.println("Empty");
             invokePromptPane("Please fill in the boxes.", "Okay");
         }
+        updateChart(presentChart);
     }
 }

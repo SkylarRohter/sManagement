@@ -32,7 +32,7 @@
     <AnchorPane fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="613.0">
          <children>
             <FlowPane fx:id="staffPane" prefHeight="606.0" prefWidth="687.0" />
-            <FlowPane fx:id="attPane" prefHeight="606.0" prefWidth="687.0" visible="false">
+            <FlowPane fx:id="attPane" prefHeight="606.0" prefWidth="687.0">
                <children>
                   <TableView fx:id="tableView" prefHeight="606.0" prefWidth="395.0">
                     <columns>
@@ -49,20 +49,20 @@
                         <Button fx:id="toggleIsPresent" mnemonicParsing="false" onAction="#onToggleIsPresentClick" prefHeight="40.0" prefWidth="342.0" text="Toggle Presence" />
                         <Button fx:id="updateTable" mnemonicParsing="false" onAction="#onUpdateTableClick" prefHeight="40.0" prefWidth="326.0" text="Update Table" />
                         <Button fx:id="resetDay" mnemonicParsing="false" onAction="#onResetButtonClick" prefHeight="40.0" prefWidth="313.0" text="Reset Day" />
-                        <PieChart prefHeight="225.0" prefWidth="292.0" />
-                        <BarChart prefHeight="264.0" prefWidth="292.0">
+                        <PieChart prefHeight="225.0" prefWidth="292.0" title="Present/Not Present" />
+                        <BarChart fx:id="presentChart" prefHeight="264.0" prefWidth="292.0" title="Present/Grade">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
                           <yAxis>
-                            <NumberAxis side="LEFT" />
+                            <NumberAxis side="LEFT" upperBound="50.0" />
                           </yAxis>
                         </BarChart>
                      </children>
                   </VBox>
                </children>
             </FlowPane>
-            <FlowPane fx:id="umPane" prefHeight="606.0" prefWidth="687.0">
+            <FlowPane fx:id="umPane" prefHeight="606.0" prefWidth="687.0" visible="false">
                <children>
                   <TableView prefHeight="606.0" prefWidth="286.0">
                     <columns>
@@ -125,7 +125,7 @@
                   </AnchorPane>
                </children>
                <effect>
-                  <DropShadow />
+                  <DropShadow blurType="GAUSSIAN" height="56.01" radius="30.545" width="68.17" />
                </effect>
             </AnchorPane>
          </children></AnchorPane>
