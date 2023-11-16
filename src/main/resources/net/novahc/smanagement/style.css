@@ -107,13 +107,19 @@
 }
 
 #age{
-    -fx-text-fill: green;
+    -fx-text-fill: -fx-argentinian-blue;
 }
 #dialoguePane{
     -fx-background-color: white;
+}
+#confirmPasswordField{
+    -fx-background-color: white;
+    -fx-border-color: -fx-timberwolf;
 }
 
 #presentChart{
     -fx-bar-fill: -fx-argentinian-blue;
 }
 .default-color0.chart-bar { -fx-bar-fill: -fx-argentinian-blue;}
+.data0.chart-pie { -fx-pie-color: -fx-cel; }
+.data1.chart-pie { -fx-pie-color: -fx-cosmos; }

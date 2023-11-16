@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="Completed add user function with new dialogue pane">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/charts/ChartManager.java" afterDir="false" />
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="barchart functionality with updates">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/remove.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/TableManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/charts/ChartManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/charts/ChartManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" afterDir="false" />
     </list>
@@ -64,6 +63,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "17",
     "last_directory_selection": "/Users/skylarrohter/IdeaProjects/sManagement/src/main/java/net/novahc/smanagement",
@@ -87,9 +87,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement" />
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -124,7 +124,7 @@
       <workItem from="1699482646124" duration="77000" />
       <workItem from="1699482726439" duration="649000" />
       <workItem from="1699504920826" duration="2835000" />
-      <workItem from="1699556118733" duration="40263000" />
+      <workItem from="1699556118733" duration="47918000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -246,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700082089325</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="barchart functionality with updates">
+      <option name="closed" value="true" />
+      <created>1700088624931</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700088624931</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +285,8 @@
     <MESSAGE value="Connected and switched to MYSql database" />
     <MESSAGE value="Finished functionality of attendance buttons" />
     <MESSAGE value="Completed add user function with new dialogue pane" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed add user function with new dialogue pane" />
+    <MESSAGE value="barchart functionality with updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="barchart functionality with updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

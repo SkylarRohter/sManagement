@@ -2,12 +2,15 @@ package net.novahc.smanagement;
 
 
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.Chart;
+import javafx.event.EventHandler;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -25,6 +28,8 @@ public class Controller implements Initializable {
     private int currentlyEnabledIndex = 0;
     private Button[] buttons;
     private FlowPane[] windowPanes;
+    private String tempPassword = "root"; //TODO Replace with password handler (settings pane)
+    private boolean correctPassword = false;
 
     //MANAGERS
     private StudentManager studentManager;
@@ -63,7 +68,11 @@ public class Controller implements Initializable {
 
 
     // DIALOGUE PANE
+
     @FXML private AnchorPane dialoguePane;
+
+    @FXML private ImageView quitButton;
+
     @FXML private AnchorPane confirmPane;
     @FXML private PasswordField confirmPasswordField;
     @FXML private Button confirmPasswordButton;
@@ -121,13 +130,17 @@ public class Controller implements Initializable {
 
         chartManager = new ChartManager();
         chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
+        chartManager.initPieChart(pieChart,studentManager.getStudents());
     }
-    //UPDATERS
-    public void updateChart(BarChart<String,Number> chart){
+    //  UPDATERS
+    public void updateChart(){
         chartManager.updateBarChart(presentChart, studentManager.getStudentTotals());
     }
+    public void updatePieChart(){
+        chartManager.updatePieChart(pieChart,studentManager.getStudents());
+    }
 
-    //BINDING
+    //  BINDING
     public void bindButton(Button b){
         b.prefWidthProperty().bind(sidePane.widthProperty());
         b.getStyleClass().add("sidebar-buttons");
@@ -168,16 +181,54 @@ public class Controller implements Initializable {
         promptLabel.setText(labelText);
         promptButton.setText(buttonText);
     }
+    private void promptPassword(){
+        dialoguePane.setVisible(true);
+        promptPane.setVisible(false);
+        confirmPane.setVisible(true);
+        System.out.println("start");
+        confirmPasswordButton.setOnAction(actionEvent -> {
+            System.out.println("helo");
+            correctPassword = checkPassword(confirmPasswordField.getText());
+            if (correctPassword) {
+                dialoguePane.setVisible(false);
+            } else {
+                confirmPasswordField.setText("");
+                try {
+                    for(int i = 0; i < 3; i++) {
+                        confirmPasswordField.setStyle("-fx-border-color: -red");
+                        Thread.sleep(500);
+                        confirmPasswordField.setStyle("-fx-border-color: -fx-timberwolf");
+                        Thread.sleep(500);
+                    }
+                    dialoguePane.setVisible(false);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        System.out.println("end");
+    }
 
-    //EVENT HANDLERS
+    //  EVENT HANDLERS
+
+    //DialoguePane
+    private boolean checkPassword(String enteredPassword){
+        return enteredPassword.equals(tempPassword);
+    }
     public void onPromptButtonClick(){
         dialoguePane.setVisible(false);
     }
+    public void onDQuitButtonClick(){
+        dialoguePane.setVisible(false);
+        confirmPasswordField.setText("");
+    }
+    //Attendance Pane
     public void onToggleIsPresentClick(){
         if(tableView.getSelectionModel().getSelectedIndex()!=-1) {
             studentManager.setPresence(tableView.getSelectionModel().getSelectedIndex());
             tableView.getSelectionModel().clearSelection();
             tableView.refresh();
+            updatePieChart();
         } else{
             invokePromptPane("Please highlight a student.", "Okay");
         }
@@ -187,15 +238,18 @@ public class Controller implements Initializable {
             student.setPresent(true);
         }
         tableView.refresh();
+        updatePieChart();
     }
     public void onResetButtonClick(){
         for(Student student : studentManager.getStudents()){
             student.setPresent(false);
         }
         tableView.refresh();
+        updatePieChart();
     }
     public void onAddUserButtonClick(){
         if(!Objects.equals(addUserNameField.getText(), "") && !Objects.equals(addUserNameField.getText(), "")) {
+            //promptPassword();
             String name = addUserNameField.getText();
             int grade = Integer.parseInt(addUserGradeField.getText());
 
@@ -204,17 +258,15 @@ public class Controller implements Initializable {
             tableManager.getData().removeAll(studentManager.getStudents());
 
             //Insert Record into Database and Array
-            studentManager.getDb().insertRecord(name,grade);
-            studentManager.addStudent(name,grade);
+            studentManager.getDb().insertRecord(name, grade);
+            studentManager.addStudent(name, grade);
 
             //Re-add to table and database
-            System.out.println(studentManager.getStudents());
             tableManager.getData().addAll(studentManager.getStudents());
             tableManager.getTable().setItems(tableManager.getData());
-
         } else {
             invokePromptPane("Please fill in the boxes.", "Okay");
         }
-        updateChart(presentChart);
+        updateChart();
     }
 }

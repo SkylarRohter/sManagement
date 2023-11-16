@@ -12,9 +12,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <SplitPane dividerPositions="0.25" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="919.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.novahc.smanagement.Controller">
   <items>
@@ -49,8 +52,8 @@
                         <Button fx:id="toggleIsPresent" mnemonicParsing="false" onAction="#onToggleIsPresentClick" prefHeight="40.0" prefWidth="342.0" text="Toggle Presence" />
                         <Button fx:id="updateTable" mnemonicParsing="false" onAction="#onUpdateTableClick" prefHeight="40.0" prefWidth="326.0" text="Update Table" />
                         <Button fx:id="resetDay" mnemonicParsing="false" onAction="#onResetButtonClick" prefHeight="40.0" prefWidth="313.0" text="Reset Day" />
-                        <PieChart prefHeight="225.0" prefWidth="292.0" title="Present/Not Present" />
-                        <BarChart fx:id="presentChart" prefHeight="264.0" prefWidth="292.0" title="Present/Grade">
+                        <PieChart fx:id="pieChart" prefHeight="225.0" prefWidth="292.0" title="Present/Not Present" />
+                        <BarChart fx:id="presentChart" prefHeight="264.0" prefWidth="292.0" title="Grade Totals">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -110,19 +113,28 @@
             <FlowPane fx:id="setPane" prefHeight="606.0" prefWidth="687.0" visible="false" />
             <AnchorPane fx:id="dialoguePane" layoutX="174.0" layoutY="178.0" prefHeight="178.0" prefWidth="342.0" visible="false">
                <children>
-                  <AnchorPane fx:id="confirmPane" prefHeight="178.0" prefWidth="342.0" visible="false">
+                  <AnchorPane fx:id="confirmPane" prefHeight="178.0" prefWidth="342.0">
                      <children>
-                        <Label layoutX="106.0" layoutY="34.0" text="Confirm Password" underline="true" />
-                        <PasswordField fx:id="confirmPasswordField" layoutX="88.0" layoutY="76.0" promptText="Password" />
-                        <Button fx:id="confirmPasswordButton" layoutX="85.0" layoutY="116.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" text="Confirm" />
+                        <Label layoutX="5.0" layoutY="36.0" text="Confirm Password" underline="true" />
+                        <PasswordField fx:id="confirmPasswordField" layoutX="5.0" layoutY="76.0" promptText="Password">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </PasswordField>
+                        <Button fx:id="confirmPasswordButton" layoutX="5.0" layoutY="116.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Confirm" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="promptPane" prefHeight="178.0" prefWidth="342.0" visible="false">
                      <children>
                         <Label fx:id="promptLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="42.0" prefHeight="18.0" prefWidth="343.0" text="Confirm Password" underline="true" />
-                        <Button fx:id="promptButton" layoutX="96.0" layoutY="113.0" mnemonicParsing="false" onAction="#onPromptButtonClick" prefHeight="31.0" prefWidth="158.0" text="Confirm" />
+                        <Button fx:id="promptButton" layoutX="5.0" layoutY="116.0" mnemonicParsing="false" onAction="#onPromptButtonClick" prefHeight="31.0" prefWidth="158.0" text="Confirm" />
                      </children>
                   </AnchorPane>
+                  <ImageView fx:id="quitButton" fitHeight="17.0" fitWidth="21.0" layoutX="330.0" layoutY="5.0" onMouseClicked="#onDQuitButtonClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@remove.png" />
+                     </image>
+                  </ImageView>
                </children>
                <effect>
                   <DropShadow blurType="GAUSSIAN" height="56.01" radius="30.545" width="68.17" />
