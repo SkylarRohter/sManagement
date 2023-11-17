@@ -6,6 +6,13 @@ import java.util.Arrays;
 public class Database {
     private ArrayList<Integer> ids;
 
+    // Configuration Fields
+
+    private String username;
+    private String password;
+    private String url;
+    private String tableName;
+
     public ArrayList<Integer> getIds() {
         return ids;
     }
@@ -27,7 +34,12 @@ public class Database {
         getGrades().add(grade);
     }
 
-    public Database(){
+    public Database(String username, String password, String url, String tableName){
+        this.username = username;
+        this.password = password;
+        this.url = url;
+        this.tableName = tableName;
+
         ids = new ArrayList<>();
         users = new ArrayList<>();
         grades = new ArrayList<>();
@@ -35,14 +47,11 @@ public class Database {
     }
 
     private void init() {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/smanagement";
-        String username = "root";
-        String password = "Theyellowapple";
-
-        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+        // "jdbc:mysql://localhost:3306/smanagement"
+        try (Connection connection = DriverManager.getConnection(url, username, password);
              Statement statement = connection.createStatement()) {
 
-            String sql = "SELECT * FROM users";
+            String sql = "SELECT * FROM "+tableName;
             ResultSet resultSet = statement.executeQuery(sql);
             ResultSetMetaData metaData = resultSet.getMetaData();
 
@@ -59,12 +68,8 @@ public class Database {
         lastId = getIds().get(getIds().size()-1)+1;
     }
     public void insertRecord(String name, int grade){
-        String jdbcUrl = "jdbc:mysql://localhost:3306/smanagement";
-        String username = "root";
-        String password = "Theyellowapple";
-
-        String sql = "INSERT INTO users (id, name, grade) VALUES (?, ?, ?);";
-        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+        String sql = "INSERT INTO "+users+" (id, name, grade) VALUES (?, ?, ?);";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, lastId);
             preparedStatement.setString(2,name);

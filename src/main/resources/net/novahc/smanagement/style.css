@@ -54,7 +54,7 @@
     -fx-background-color: -fx-bgc;
 }
 #setPane{
-    -fx-background-color: green;
+    -fx-background-color: -fx-bgc;
 }
 
 /* ATTENDANCE */

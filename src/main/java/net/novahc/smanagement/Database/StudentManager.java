@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StudentManager {
+
+
+    public void setInitInputValues(String[] initInputValues) {
+        this.initInputValues = initInputValues;
+    }
+
+    private String[] initInputValues;
+
     private ArrayList<Student> students;
 
     private Database db;
@@ -15,7 +23,7 @@ public class StudentManager {
 
     public void init(){
         students = new ArrayList<>();
-        db = new Database();
+        db = new Database(initInputValues[0],initInputValues[1],initInputValues[2],initInputValues[3]);
         for(int i = 0; i < db.getIds().size(); i++){
             students.add(new Student(db.getUsers().get(i),db.getGrades().get(i),true));
         }

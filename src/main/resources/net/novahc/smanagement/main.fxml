@@ -8,6 +8,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +17,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -34,7 +39,7 @@
          </children></AnchorPane>
     <AnchorPane fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="613.0">
          <children>
-            <FlowPane fx:id="scanPane" prefHeight="606.0" prefWidth="687.0">
+            <FlowPane fx:id="scanPane" prefHeight="606.0" prefWidth="687.0" visible="false">
                <children>
                   <FlowPane prefHeight="606.0" prefWidth="687.0" />
                </children>
@@ -114,7 +119,62 @@
                   </AnchorPane>
                </children>
             </FlowPane>
-            <FlowPane fx:id="setPane" prefHeight="606.0" prefWidth="687.0" visible="false" />
+            <FlowPane fx:id="setPane" prefHeight="606.0" prefWidth="687.0">
+               <children>
+                  <TabPane prefHeight="606.0" prefWidth="687.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab closable="false" text="General">
+                        <content>
+                              <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="549.0" prefWidth="541.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.80322265625" minWidth="10.0" prefWidth="311.42010498046875" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="461.59539794921875" minWidth="10.0" prefWidth="375.57989501953125" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                        </content>
+                      </Tab>
+                      <Tab closable="false" text="Database">
+                        <content>
+                              <GridPane gridLinesVisible="true">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.755126953125" minWidth="10.0" prefWidth="338.54254150390625" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="419.2977294921875" minWidth="10.0" prefWidth="348.95745849609375" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="282.59039306640625" minHeight="10.0" prefHeight="281.35101318359375" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="279.0425720214844" minHeight="10.0" prefHeight="266.64898681640625" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="14.0" layoutY="5.0" prefHeight="18.0" prefWidth="319.0" text="SQL Database Settings" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="25.0" prefHeight="18.0" prefWidth="319.0" text="jdbc URL" textAlignment="CENTER" />
+                                          <TextField fx:id="urlField" layoutX="42.0" layoutY="46.0" prefHeight="26.0" prefWidth="253.0" promptText="Enter URL.." text="jdbc:mysql://localhost:3306/smanagement" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="79.0" prefHeight="18.0" prefWidth="319.0" text="Username" textAlignment="CENTER" translateX="-9.0" />
+                                          <TextField fx:id="usernameFieldDB" layoutX="52.0" layoutY="102.0" prefHeight="26.0" prefWidth="253.0" promptText="Enter username.." text="root" translateX="-9.0" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="132.0" prefHeight="18.0" prefWidth="319.0" text="Password" textAlignment="CENTER" />
+                                          <TextField fx:id="passwordFieldDB" layoutX="43.0" layoutY="155.0" prefHeight="26.0" prefWidth="253.0" promptText="Enter Password.." />
+                                          <Button fx:id="databaseButton" layoutX="43.0" layoutY="236.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="253.0" text="Register" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="185.0" prefHeight="18.0" prefWidth="319.0" text="Table Name" textAlignment="CENTER" />
+                                          <TextField fx:id="tableNameField" layoutX="43.0" layoutY="208.0" prefHeight="26.0" prefWidth="253.0" promptText="Enter the table name.." />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </GridPane>
+                        </content>
+                      </Tab>
+                        <Tab closable="false" text="Security">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </FlowPane>
             <AnchorPane fx:id="dialoguePane" layoutX="174.0" layoutY="178.0" prefHeight="178.0" prefWidth="342.0" visible="false">
                <children>
                   <AnchorPane fx:id="confirmPane" prefHeight="178.0" prefWidth="342.0">

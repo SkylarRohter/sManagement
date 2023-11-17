@@ -95,6 +95,12 @@ public class Controller implements Initializable {
     @FXML private TextField removeUserGradeField;
     @FXML private Button removeUserButton;
 
+    //Settings Pane
+    @FXML private TextField urlField;
+    @FXML private TextField usernameFieldDB;
+    @FXML private TextField passwordFieldDB;
+    @FXML private TextField tableNameField;
+    @FXML private Button databaseButton;
 
 
     @Override
@@ -120,13 +126,20 @@ public class Controller implements Initializable {
             button.setOnAction(event -> handleButtonClick((Button) event.getSource()));
         }
         studentManager = new StudentManager();
-
-        tableManager = new TableManager(tableView, studentManager);
-        tableManager.init(name,age,present);
-
+        tableManager = new TableManager(tableView,studentManager);
         chartManager = new ChartManager();
-        chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
-        chartManager.initPieChart(pieChart,studentManager.getStudents());
+        //invokePromptPane("Please register SQL database", "Okay"); TODO Unhighlight
+        databaseButton.setOnAction(actionEvent -> {
+            String[] initInputValues = new String[4];
+            initInputValues[0] = usernameFieldDB.getText();
+            initInputValues[1] = passwordFieldDB.getText();
+            initInputValues[2] = urlField.getText();
+            initInputValues[3] = tableNameField.getText();
+            studentManager.setInitInputValues(initInputValues);
+            tableManager.init(name,age,present);
+            chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
+            chartManager.initPieChart(pieChart,studentManager.getStudents());
+        });
     }
     //  UPDATERS
     public void updateChart(){
