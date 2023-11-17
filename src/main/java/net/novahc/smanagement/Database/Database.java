@@ -68,7 +68,7 @@ public class Database {
         lastId = getIds().get(getIds().size()-1)+1;
     }
     public void insertRecord(String name, int grade){
-        String sql = "INSERT INTO "+users+" (id, name, grade) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO "+tableName+" (id, name, grade) VALUES (?, ?, ?);";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, lastId);

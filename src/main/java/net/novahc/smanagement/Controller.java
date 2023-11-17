@@ -139,6 +139,11 @@ public class Controller implements Initializable {
             tableManager.init(name,age,present);
             chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
             chartManager.initPieChart(pieChart,studentManager.getStudents());
+            urlField.setDisable(true);
+            usernameFieldDB.setDisable(true);
+            passwordFieldDB.setDisable(true);
+            tableNameField.setDisable(true);
+            databaseButton.setDisable(true);
         });
     }
     //  UPDATERS

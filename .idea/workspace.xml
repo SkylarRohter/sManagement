@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="omitted pom changes and fixed first user not being added">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/database/localdatabase.txt" afterDir="false" />
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="started work on settings pane, with configurable sql settings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +126,7 @@
       <workItem from="1699504920826" duration="2835000" />
       <workItem from="1699556118733" duration="61225000" />
       <workItem from="1700195302535" duration="11038000" />
-      <workItem from="1700260076633" duration="292000" />
+      <workItem from="1700260076633" duration="895000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -277,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700195525415</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="started work on settings pane, with configurable sql settings">
+      <option name="closed" value="true" />
+      <created>1700260487378</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1700260487378</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +314,8 @@
     <MESSAGE value="barchart functionality with updates" />
     <MESSAGE value="finally got pie chart working with animation" />
     <MESSAGE value="omitted pom changes and fixed first user not being added" />
-    <option name="LAST_COMMIT_MESSAGE" value="omitted pom changes and fixed first user not being added" />
+    <MESSAGE value="started work on settings pane, with configurable sql settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="started work on settings pane, with configurable sql settings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
