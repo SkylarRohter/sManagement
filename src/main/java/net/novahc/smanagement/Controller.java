@@ -1,21 +1,17 @@
 package net.novahc.smanagement;
 
 
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.event.EventHandler;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import net.novahc.smanagement.Database.StudentManager;
-import net.novahc.smanagement.functions.TableManager;
+import net.novahc.smanagement.functions.charts.TableManager;
 import net.novahc.smanagement.functions.Users.Student;
 import net.novahc.smanagement.functions.charts.ChartManager;
 
@@ -42,7 +38,7 @@ public class Controller implements Initializable {
     @FXML private FlowPane buttonPane;
 
     // SECONDARY PANES
-    @FXML private FlowPane staffPane;
+    @FXML private FlowPane scanPane;
     @FXML private FlowPane umPane;
     @FXML private FlowPane setPane;
 
@@ -105,7 +101,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // FXML element array inits
         buttons = new Button[]{sbButton, aButton, umButton, sButton};
-        windowPanes = new FlowPane[]{staffPane, attPane, umPane, setPane};
+        windowPanes = new FlowPane[]{scanPane, attPane, umPane, setPane};
 
         // Bind the X,Y Coordinates of the buttonPane (flow) to the AnchorPane within sidePane
         buttonPane.prefWidthProperty().bind(sidePane.widthProperty());

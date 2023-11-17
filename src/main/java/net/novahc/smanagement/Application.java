@@ -9,6 +9,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
+
 public class Application extends javafx.application.Application {
     private double xOffset;
     private double yOffset;
@@ -32,7 +33,6 @@ public class Application extends javafx.application.Application {
         stage.setScene(scene);
         stage.show();
     }
-
     public static void main(String[] args) {
         launch();
     }

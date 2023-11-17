@@ -25,7 +25,7 @@
          <children>
             <FlowPane fx:id="buttonPane" prefHeight="537.0" prefWidth="220.0">
                <children>
-                  <Button fx:id="sbButton" disable="true" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Staff Bulletin" />
+                  <Button fx:id="sbButton" disable="true" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Scanner" />
                   <Button fx:id="aButton" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Attendence" />
                   <Button fx:id="umButton" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="User Management" />
                   <Button fx:id="sButton" mnemonicParsing="false" prefHeight="151.0" prefWidth="220.0" text="Settings" />
@@ -34,8 +34,12 @@
          </children></AnchorPane>
     <AnchorPane fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="613.0">
          <children>
-            <FlowPane fx:id="staffPane" prefHeight="606.0" prefWidth="687.0" />
-            <FlowPane fx:id="attPane" prefHeight="606.0" prefWidth="687.0">
+            <FlowPane fx:id="scanPane" prefHeight="606.0" prefWidth="687.0">
+               <children>
+                  <FlowPane prefHeight="606.0" prefWidth="687.0" />
+               </children>
+            </FlowPane>
+            <FlowPane fx:id="attPane" prefHeight="606.0" prefWidth="687.0" visible="false">
                <children>
                   <TableView fx:id="tableView" prefHeight="606.0" prefWidth="395.0">
                     <columns>

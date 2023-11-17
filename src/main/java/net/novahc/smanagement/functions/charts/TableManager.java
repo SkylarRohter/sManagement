@@ -1,4 +1,4 @@
-package net.novahc.smanagement.functions;
+package net.novahc.smanagement.functions.charts;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;

@@ -16,7 +16,7 @@ public class StudentManager {
     public void init(){
         students = new ArrayList<>();
         db = new Database();
-        for(int i = 1; i < db.getIds().size(); i++){
+        for(int i = 0; i < db.getIds().size(); i++){
             students.add(new Student(db.getUsers().get(i),db.getGrades().get(i),true));
         }
     }
