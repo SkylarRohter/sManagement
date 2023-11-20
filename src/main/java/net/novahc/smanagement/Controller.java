@@ -102,6 +102,12 @@ public class Controller implements Initializable {
     @FXML private TextField tableNameField;
     @FXML private Button databaseButton;
 
+    @FXML private CheckBox usePassword;
+    @FXML private CheckBox usePasswordForAdd;
+    @FXML private CheckBox usePasswordForUpdate;
+    @FXML private CheckBox usePasswordForRemove;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -225,7 +231,7 @@ public class Controller implements Initializable {
 
     //  EVENT HANDLERS
 
-    //DialoguePane
+    //Dialogue Pane
     private boolean checkPassword(String enteredPassword){
         return enteredPassword.equals(tempPassword);
     }
@@ -236,6 +242,7 @@ public class Controller implements Initializable {
         dialoguePane.setVisible(false);
         confirmPasswordField.setText("");
     }
+
     //Attendance Pane
     public void onToggleIsPresentClick(){
         if(tableView.getSelectionModel().getSelectedIndex()!=-1) {
@@ -282,5 +289,21 @@ public class Controller implements Initializable {
             invokePromptPane("Please fill in the boxes.", "Okay");
         }
         updateChart();
+    }
+
+    //Settings Pane
+    public void onUsePasswordChecked(){
+        if(usePassword.isSelected()){
+            usePasswordForAdd.setDisable(false);
+            usePasswordForUpdate.setDisable(false);
+            usePasswordForRemove.setDisable(false);
+        } else {
+            usePasswordForAdd.setDisable(true);
+            usePasswordForUpdate.setDisable(true);
+            usePasswordForRemove.setDisable(true);
+            usePasswordForAdd.setSelected(false);
+            usePasswordForUpdate.setSelected(false);
+            usePasswordForRemove.setSelected(false);
+        }
     }
 }

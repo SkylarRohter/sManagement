@@ -3,8 +3,16 @@ TODO: Finish UpdateUser functionality
 TODO: Finish RemoveUser functionality
 TODO: Fill empty section (chart?)
 
+- Scanner Pane
+
+- Settings pane
+TODO: Finish database tab
+TODO: Design security tab
+TODO: Design preferences tab
+
 - Dialogue Pane
 TODO: Add user functionality with a working dialogue
+TODO: Cleanup invoked dialogue
 TODO: Finish all user modification with dialogue
 
 - Code cleanup
