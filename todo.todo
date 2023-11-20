@@ -1,4 +1,19 @@
+- User management pane
+TODO: Finish UpdateUser functionality
+TODO: Finish RemoveUser functionality
+TODO: Fill empty section (chart?)
+
+- Dialogue Pane
 TODO: Add user functionality with a working dialogue
 TODO: Finish all user modification with dialogue
+
+- Code cleanup
+TODO: Unify code in manager classes
+TODO: Add parent class / interface?
+
+- Styling
 TODO: Make styling change color for true/false for isPresent()
-TODO: Make the system easily deployable
+
+- Finishing
+TODO: Finish README.md
+TODO: Make repository a deployable application

@@ -62,7 +62,6 @@ public class Database {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("Error connecting to database.");
         }
         lastId = getIds().get(getIds().size()-1)+1;

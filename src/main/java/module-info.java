@@ -7,5 +7,4 @@ module net.novahc.smanagement {
 
     opens net.novahc.smanagement to javafx.fxml;
     exports net.novahc.smanagement;
-    exports net.novahc.smanagement.Database;
 }
