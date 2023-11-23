@@ -40,9 +40,26 @@
          </children></AnchorPane>
     <AnchorPane fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="613.0">
          <children>
-            <FlowPane fx:id="scanPane" prefHeight="606.0" prefWidth="687.0" visible="false">
+            <FlowPane fx:id="scanPane" prefHeight="606.0" prefWidth="687.0">
                <children>
-                  <FlowPane prefHeight="606.0" prefWidth="687.0" />
+                  <GridPane prefHeight="606.0" prefWidth="687.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="470.0" minHeight="10.0" prefHeight="469.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="304.0" minHeight="10.0" prefHeight="137.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <ImageView fx:id="webcamPane" fitHeight="469.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true" />
+                        <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Button fx:id="stopScanningButton" mnemonicParsing="false" onAction="#onStopScanningButtonClick" text="stop" />
+                              <Label fx:id="decodeResultLabel" prefHeight="18.0" prefWidth="629.0" text="Label" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </GridPane>
                </children>
             </FlowPane>
             <FlowPane fx:id="attPane" prefHeight="606.0" prefWidth="687.0" visible="false">
@@ -120,7 +137,7 @@
                   </AnchorPane>
                </children>
             </FlowPane>
-            <FlowPane fx:id="setPane" prefHeight="606.0" prefWidth="687.0">
+            <FlowPane fx:id="setPane" prefHeight="606.0" prefWidth="687.0" visible="false">
                <children>
                   <TabPane prefHeight="606.0" prefWidth="687.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>

@@ -1,5 +1,6 @@
 package net.novahc.smanagement;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -8,7 +9,6 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
-
 
 public class Application extends javafx.application.Application {
     private double xOffset;
@@ -29,6 +29,10 @@ public class Application extends javafx.application.Application {
         });
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
+        stage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

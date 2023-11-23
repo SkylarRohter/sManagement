@@ -14,6 +14,7 @@ import net.novahc.smanagement.Database.StudentManager;
 import net.novahc.smanagement.functions.charts.TableManager;
 import net.novahc.smanagement.functions.Users.Student;
 import net.novahc.smanagement.functions.charts.ChartManager;
+import net.novahc.smanagement.utils.WebcamManager;
 
 import java.net.URL;
 import java.util.Objects;
@@ -31,6 +32,7 @@ public class Controller implements Initializable {
     private StudentManager studentManager;
     private TableManager tableManager;
     private ChartManager chartManager;
+    private WebcamManager webcamManager;
 
     // MAIN PANES
     @FXML private AnchorPane mainPane;
@@ -107,6 +109,11 @@ public class Controller implements Initializable {
     @FXML private CheckBox usePasswordForUpdate;
     @FXML private CheckBox usePasswordForRemove;
 
+    //Scanner Pane;
+    @FXML private ImageView webcamPane;
+    @FXML private Button stopScanningButton;
+    @FXML private Label decodeResultLabel;
+
 
 
     @Override
@@ -131,6 +138,7 @@ public class Controller implements Initializable {
         for(Button button : buttons){
             button.setOnAction(event -> handleButtonClick((Button) event.getSource()));
         }
+        webcamManager = new WebcamManager();
         studentManager = new StudentManager();
         tableManager = new TableManager(tableView,studentManager);
         chartManager = new ChartManager();
@@ -145,6 +153,7 @@ public class Controller implements Initializable {
             tableManager.init(name,age,present);
             chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
             chartManager.initPieChart(pieChart,studentManager.getStudents());
+            webcamManager.init(webcamPane,decodeResultLabel);
             urlField.setDisable(true);
             usernameFieldDB.setDisable(true);
             passwordFieldDB.setDisable(true);
@@ -305,5 +314,15 @@ public class Controller implements Initializable {
             usePasswordForUpdate.setSelected(false);
             usePasswordForRemove.setSelected(false);
         }
+    }
+
+    //Scanner Pane
+    public void onStopScanningButtonClick(){
+//        if(webcamManager.getDecoder().isScanning()){
+//            webcamManager.stopDecoding();
+//        } else {
+//            webcamManager.startDecoding();
+//        }
+        webcamManager.getDecoder().invokeSingleScan();
     }
 }
