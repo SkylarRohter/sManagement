@@ -5,6 +5,16 @@ import javafx.beans.property.*;
 public class Student {
     private String name;
     private int grade;
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    private int studentId;
     private boolean present;
 
     public String getName() {
@@ -32,9 +42,10 @@ public class Student {
         this.present = present;
     }
 
-    public Student(String name, int grade, boolean present) {
+    public Student(String name, int grade, int studentId, boolean present) {
         this.name = name;
         this.grade = grade;
+        this.studentId = studentId;
         this.present = present;
     }
     public StringProperty nameProperty() {

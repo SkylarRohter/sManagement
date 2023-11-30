@@ -84,6 +84,7 @@ public class Controller implements Initializable {
     //UserManagement Pane
     @FXML private AnchorPane addUserPane;
     @FXML private TextField addUserNameField;
+    @FXML private TextField addUserStudentIdField;
     @FXML private TextField addUserGradeField;
     @FXML private Button addUserButton;
 
@@ -110,7 +111,7 @@ public class Controller implements Initializable {
     @FXML private CheckBox usePasswordForRemove;
 
     //Scanner Pane;
-    @FXML private ImageView webcamPane;
+    @FXML private ImageView webcamWrapper;
     @FXML private Button stopScanningButton;
     @FXML private Label decodeResultLabel;
 
@@ -153,7 +154,7 @@ public class Controller implements Initializable {
             tableManager.init(name,age,present);
             chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
             chartManager.initPieChart(pieChart,studentManager.getStudents());
-            webcamManager.init(webcamPane,decodeResultLabel);
+            webcamManager.init(webcamWrapper,decodeResultLabel);
             urlField.setDisable(true);
             usernameFieldDB.setDisable(true);
             passwordFieldDB.setDisable(true);
@@ -282,14 +283,15 @@ public class Controller implements Initializable {
             //promptPassword();
             String name = addUserNameField.getText();
             int grade = Integer.parseInt(addUserGradeField.getText());
+            int studentid = Integer.parseInt(addUserStudentIdField.getText());
 
             //Clear Table and Data
             tableManager.getTable().getItems().removeAll();
             tableManager.getData().removeAll(studentManager.getStudents());
 
             //Insert Record into Database and Array
-            studentManager.getDb().insertRecord(name, grade);
-            studentManager.addStudent(name, grade);
+            studentManager.getDb().insertRecord(name, grade, studentid);
+            studentManager.addStudent(name, grade, studentid);
 
             //Re-add to table and database
             tableManager.getData().addAll(studentManager.getStudents());

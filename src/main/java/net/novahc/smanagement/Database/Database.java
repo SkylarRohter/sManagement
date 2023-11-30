@@ -26,12 +26,23 @@ public class Database {
     public ArrayList<Integer> getGrades(){
         return grades;
     }
+
+    public ArrayList<Integer> getStudentIds() {
+        return studentIds;
+    }
+
+    public void setStudentIds(ArrayList<Integer> studentIds) {
+        this.studentIds = studentIds;
+    }
+
+    private ArrayList<Integer> studentIds;
     private int lastId;
-    public void addUser(String name, int grade){
+    public void addUser(String name, int grade, int studentId){
         lastId++;
         getIds().add(lastId);
         getUsers().add(name);
         getGrades().add(grade);
+        getStudentIds().add(studentId);
     }
 
     public Database(String username, String password, String url, String tableName){
@@ -43,6 +54,7 @@ public class Database {
         ids = new ArrayList<>();
         users = new ArrayList<>();
         grades = new ArrayList<>();
+        studentIds = new ArrayList<>();
         init();
     }
 
@@ -59,6 +71,7 @@ public class Database {
                 ids.add(resultSet.getInt("id"));
                 users.add(resultSet.getString("name"));
                 grades.add(resultSet.getInt("grade"));
+                studentIds.add(resultSet.getInt("studentid"));
             }
 
         } catch (Exception e) {
@@ -66,18 +79,19 @@ public class Database {
         }
         lastId = getIds().get(getIds().size()-1)+1;
     }
-    public void insertRecord(String name, int grade){
-        String sql = "INSERT INTO "+tableName+" (id, name, grade) VALUES (?, ?, ?);";
+    public void insertRecord(String name, int grade, int studentId){
+        String sql = "INSERT INTO "+tableName+" (id, name, grade, studentid) VALUES (?, ?, ?, ?);";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, lastId);
             preparedStatement.setString(2,name);
             preparedStatement.setInt(3, grade);
+            preparedStatement.setInt(4, studentId);
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Data inserted successfully!");
-                addUser(name,grade);
+                addUser(name,grade, studentId);
             } else {
                 System.out.println("Failed to insert data.");
             }

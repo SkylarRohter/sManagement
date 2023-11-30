@@ -25,11 +25,11 @@ public class StudentManager {
         students = new ArrayList<>();
         db = new Database(initInputValues[0],initInputValues[1],initInputValues[2],initInputValues[3]);
         for(int i = 0; i < db.getIds().size(); i++){
-            students.add(new Student(db.getUsers().get(i),db.getGrades().get(i),true));
+            students.add(new Student(db.getUsers().get(i),db.getGrades().get(i),db.getStudentIds().get(i),true));
         }
     }
-    public void addStudent(String name, int grade){
-        students.add(new Student(name, grade, false));
+    public void addStudent(String name, int grade, int studentId){
+        students.add(new Student(name, grade, studentId,false));
     }
     public void removeStudent(String name, int grade){
     }
