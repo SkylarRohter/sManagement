@@ -44,6 +44,15 @@ public class Database {
         getGrades().add(grade);
         getStudentIds().add(studentId);
     }
+    public void updateName(String newName, int id){
+        getUsers().set(id,newName);
+    }
+    public void updateGrade(int newGrade, int id){
+        getGrades().set(id,newGrade);
+    }
+    public void updateStudentId(int newStudentId, int id){
+        getStudentIds().set(id,newStudentId);
+    }
 
     public Database(String username, String password, String url, String tableName){
         this.username = username;
@@ -96,6 +105,46 @@ public class Database {
                 System.out.println("Failed to insert data.");
             }
         } catch (SQLException e) {
+            printSQLException(e);
+        }
+
+    }
+    public void updateRecord(String columnName, String newValue, boolean isNumeric, int key){
+        try (Connection connection  = DriverManager.getConnection(url, username, password)) {
+            String sql = "UPDATE " + tableName + " SET " + columnName + " = ? WHERE id = ?";
+            try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+                boolean name = false, grade = false, sId = false;
+                if(isNumeric){
+                    if(newValue.length()<=2){
+                        preparedStatement.setInt(1,Integer.parseInt(newValue));
+                        grade = true;
+                    } else {
+                        preparedStatement.setInt(1, Integer.parseInt(newValue));
+                        sId = true;
+                    }
+                } else {
+                    preparedStatement.setString(1, newValue);
+                    name = true;
+                }
+                preparedStatement.setInt(2,key);
+                int rowsAffected = preparedStatement.executeUpdate();
+                if (rowsAffected > 0) {
+                    if(grade){
+                        updateGrade(Integer.parseInt(newValue),key);
+
+                    } else if(sId){
+                        updateStudentId(Integer.parseInt(newValue),key);
+                    } else if(name){
+                        updateName(newValue,key);
+                    } else{
+                        System.out.println("Error specifying newValue type.");
+                    }
+                    System.out.println("Data updated successfully!");
+                } else {
+                    System.out.println("Failed to update data.");
+                }
+            }
+        } catch (SQLException e){
             printSQLException(e);
         }
 

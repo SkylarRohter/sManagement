@@ -6,6 +6,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
@@ -120,10 +121,10 @@
                               <AnchorPane fx:id="updateUserPane" prefHeight="200.0" prefWidth="400.0">
                                  <children>
                                     <Label layoutX="180.0" layoutY="13.0" text="Update User" underline="true" />
-                                    <Button fx:id="updateUserButton" layoutX="105.0" layoutY="159.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="218.0" text="Update" />
+                                    <Button fx:id="updateUserButton" layoutX="105.0" layoutY="159.0" mnemonicParsing="false" onAction="#onUpdateUserButtonClick" prefHeight="33.0" prefWidth="218.0" text="Update" />
                                     <TextField fx:id="updateUserNameField" layoutX="105.0" layoutY="48.0" prefHeight="26.0" prefWidth="217.0" promptText="Name (fLast)" />
-                                    <TextField fx:id="updateUserGradeField" layoutX="105.0" layoutY="88.0" prefHeight="26.0" prefWidth="217.0" promptText="StudentId" />
-                                    <TextField fx:id="updateUserGradeField1" layoutX="105.0" layoutY="123.0" prefHeight="26.0" prefWidth="217.0" promptText="New Name/Grade/Id">
+                                    <TextField fx:id="updateUserIdField" layoutX="105.0" layoutY="88.0" prefHeight="26.0" prefWidth="217.0" promptText="StudentId" />
+                                    <TextField fx:id="updateUserChangeField" layoutX="105.0" layoutY="123.0" prefHeight="26.0" prefWidth="217.0" promptText="New Name/Grade/Id">
                                        <tooltip>
                                           <Tooltip text="EX: " />
                                        </tooltip>
@@ -161,7 +162,7 @@
                               </GridPane>
                         </content>
                       </Tab>
-                      <Tab closable="false" text="Database">
+                      <Tab closable="false" text="Configuration">
                         <content>
                               <GridPane gridLinesVisible="true">
                                  <columnConstraints>
@@ -185,6 +186,14 @@
                                           <Button fx:id="databaseButton" layoutX="43.0" layoutY="236.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="253.0" text="Register" />
                                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="185.0" prefHeight="18.0" prefWidth="319.0" text="Table Name" textAlignment="CENTER" />
                                           <TextField fx:id="tableNameField" layoutX="43.0" layoutY="208.0" prefHeight="26.0" prefWidth="253.0" promptText="Enter the table name.." />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="8.0" layoutY="14.0" prefHeight="18.0" prefWidth="319.0" text="Scanner Configuration" />
+                                          <ChoiceBox fx:id="cameraSelector" layoutX="14.0" layoutY="66.0" prefWidth="150.0" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="41.0" prefHeight="18.0" prefWidth="146.0" text="Select a camera" />
+                                          <Button fx:id="updateCamera" layoutX="170.0" layoutY="64.0" minHeight="20.0" minWidth="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="63.0" text="Update" />
                                        </children>
                                     </AnchorPane>
                                  </children>

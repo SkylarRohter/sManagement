@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="added webcam accessibility and qr/barcode decoder">
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="decode functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/Users/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/charts/ChartManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/charts/ChartManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/Decoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/WebcamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/WebcamManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.todo" beforeDir="false" afterPath="$PROJECT_DIR$/todo.todo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +47,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/com/github/sarxos/webcam-capture/0.3.12/webcam-capture-0.3.12-sources.jar!/com/github/sarxos/webcam/Webcam.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/openjdk-21/Contents/Home/lib/src.zip!/java.base/java/util/List.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,7 +82,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.1150748&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -140,7 +141,10 @@
       <workItem from="1700594889812" duration="6523000" />
       <workItem from="1700716438909" duration="4102000" />
       <workItem from="1701205694476" duration="11000" />
-      <workItem from="1701276400168" duration="8092000" />
+      <workItem from="1701276400168" duration="10830000" />
+      <workItem from="1701378992066" duration="9639000" />
+      <workItem from="1701653529682" duration="3588000" />
+      <workItem from="1701719037168" duration="4905000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -350,7 +354,8 @@
     <MESSAGE value="another test commit" />
     <MESSAGE value="pre webcam commit" />
     <MESSAGE value="added webcam accessibility and qr/barcode decoder" />
-    <option name="LAST_COMMIT_MESSAGE" value="added webcam accessibility and qr/barcode decoder" />
+    <MESSAGE value="centered webcamWrapper and added studentID to database and usermanagement" />
+    <option name="LAST_COMMIT_MESSAGE" value="centered webcamWrapper and added studentID to database and usermanagement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -22,6 +22,12 @@ public class Decoder {
     private Webcam webcam;
     private Label decodeResult;
 
+    public String getResult() {
+        return resultText;
+    }
+
+    private String resultText;
+
     public boolean isScanning() {
         return scanning;
     }
@@ -32,6 +38,7 @@ public class Decoder {
 
     private boolean scanning = false;
 
+    // TODO remove this cacajote
     public void start() {
 
         do {
@@ -57,7 +64,7 @@ public class Decoder {
                 try {
                     result = new MultiFormatReader().decode(bitmap);
                 } catch (NotFoundException e) {
-                    // fall thru, it means there is no QR code in image
+                    System.out.println("Unable to read QR code.");
                 }
             }
 
@@ -93,12 +100,13 @@ public class Decoder {
             try {
                 result = new MultiFormatReader().decode(bitmap);
             } catch (NotFoundException e) {
-                // fall thru, it means there is no QR code in image
+                resultText = null;
             }
         }
 
         if (result != null) {
             decodeResult.setText(result.getText());
+            resultText = result.getText();
         }
     }
 }

@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StudentManager {
-
-
     public void setInitInputValues(String[] initInputValues) {
         this.initInputValues = initInputValues;
     }
@@ -30,6 +28,9 @@ public class StudentManager {
     }
     public void addStudent(String name, int grade, int studentId){
         students.add(new Student(name, grade, studentId,false));
+    }
+    public void updateStudent(int key, String name, int grade, int studentId,boolean present){
+        students.set(key, new Student(name,grade,studentId,present));
     }
     public void removeStudent(String name, int grade){
     }
@@ -61,7 +62,16 @@ public class StudentManager {
         }
         return totals;
     }
-    public void setPresence(int index){
+    public void setPresence(int id){
+        int index = db.getStudentIds().indexOf(id);
         students.get(index).setPresent(!students.get(index).isPresent());
+    }
+    public boolean isRegisteredId(int id){
+        for(Student student : students){
+            if(student.getStudentId() == id){
+                return true;
+            }
+        }
+        return false;
     }
 }

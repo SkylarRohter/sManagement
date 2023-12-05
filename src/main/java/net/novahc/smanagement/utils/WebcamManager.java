@@ -13,38 +13,33 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageReader;
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 public class WebcamManager {
     public Decoder getDecoder() {
         return decoder;
     }
-
+    private Webcam camera;
     private Decoder decoder;
     private static final Logger LOG = LoggerFactory.getLogger(WebcamManager.class);
     public static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(4);
 
+
+    /**
+     * @param index of selected camera
+     */
+    public void setCamera(int index){
+        camera = Webcam.getWebcams().get(index);
+    }
     public WebcamManager(){
         Webcam.setDriver(new NativeDriver());
-        Webcam[] webcams = Webcam.getWebcams().toArray(new Webcam[1]);
-
-        if (webcams.length > 0) {
-            System.out.println("List of available webcams:");
-
-            // Print the names of the webcams
-            for (Webcam webcam : webcams) {
-                System.out.println(webcam.getName());
-            }
-        }
-        Webcam.setDriver(new NativeDriver());
-        //Webcam[] webcams = Webcam.getWebcams().toArray(new Webcam[0]);
     }
 
     public void init(ImageView imageView, Label decodeResult){
-        Webcam camera = Webcam.getWebcams().get(1);
         decoder = new Decoder(camera, decodeResult);
         final WebcamDevice device = camera.getDevice();
         LOG.info("Found camera: {}, device = {}", camera, device);
@@ -76,6 +71,7 @@ public class WebcamManager {
     }
 
     /**
+     * Centers the image in the webcamWrapper
      * @author https://stackoverflow.com/users/4880243/againpsychox
      * @param imageView
      */
@@ -102,6 +98,13 @@ public class WebcamManager {
             imageView.setTranslateY((imageView.getFitHeight() - h) / 2);
 
         }
+    }
+    /**
+     * @return ArrayList of all available webcams
+     */
+    public List<Webcam> getWebcams(){
+        List<Webcam> meow = Webcam.getWebcams();
+        return Webcam.getWebcams();
     }
     public void startDecoding(){
         decoder.start();

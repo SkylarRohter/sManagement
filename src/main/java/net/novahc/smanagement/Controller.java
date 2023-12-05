@@ -1,6 +1,9 @@
 package net.novahc.smanagement;
 
 
+import com.github.sarxos.webcam.Webcam;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -19,6 +22,8 @@ import net.novahc.smanagement.utils.WebcamManager;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Pattern;
 
 public class Controller implements Initializable {
     // FIELDS
@@ -90,6 +95,8 @@ public class Controller implements Initializable {
 
     @FXML private AnchorPane updateUserPane;
     @FXML private TextField updateUserNameField;
+    @FXML private TextField updateUserIdField;
+    @FXML private TextField updateUserChangeField;
     @FXML private TextField updateUserGradeField;
     @FXML private Button updateUserButton;
 
@@ -109,6 +116,9 @@ public class Controller implements Initializable {
     @FXML private CheckBox usePasswordForAdd;
     @FXML private CheckBox usePasswordForUpdate;
     @FXML private CheckBox usePasswordForRemove;
+
+    @FXML private ChoiceBox<String> cameraSelector;
+    @FXML private Button updateCamera;
 
     //Scanner Pane;
     @FXML private ImageView webcamWrapper;
@@ -143,7 +153,7 @@ public class Controller implements Initializable {
         studentManager = new StudentManager();
         tableManager = new TableManager(tableView,studentManager);
         chartManager = new ChartManager();
-        //invokePromptPane("Please register SQL database", "Okay"); TODO Unhighlight
+        invokePromptPane("Please configure application.", "Okay");
         databaseButton.setOnAction(actionEvent -> {
             String[] initInputValues = new String[4];
             initInputValues[0] = usernameFieldDB.getText();
@@ -154,15 +164,34 @@ public class Controller implements Initializable {
             tableManager.init(name,age,present);
             chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
             chartManager.initPieChart(pieChart,studentManager.getStudents());
-            webcamManager.init(webcamWrapper,decodeResultLabel);
             urlField.setDisable(true);
             usernameFieldDB.setDisable(true);
             passwordFieldDB.setDisable(true);
             tableNameField.setDisable(true);
             databaseButton.setDisable(true);
         });
+        ObservableList<String> labelList = FXCollections.observableArrayList();
+        for(Webcam webcam : webcamManager.getWebcams()){
+            labelList.add(webcam.getName());
+        }
+        cameraSelector.setItems(labelList);
+        updateCamera.setOnAction(actionEvent -> {
+            webcamManager.setCamera(cameraSelector.getSelectionModel().getSelectedIndex());
+            System.out.println(cameraSelector.getSelectionModel().getSelectedIndex());
+            webcamManager.init(webcamWrapper,decodeResultLabel);
+            cameraSelector.setDisable(true);
+            updateCamera.setDisable(true);
+        });
     }
-    //  UPDATERS
+    // UTILS
+    public boolean isNumeric(String str){
+        if(str == null){
+            return false;
+        }
+        Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+        return pattern.matcher(str).matches();
+    }
+    //updaters
     public void updateChart(){
         chartManager.updateBarChart(presentChart, studentManager.getStudentTotals());
     }
@@ -170,7 +199,7 @@ public class Controller implements Initializable {
         chartManager.updatePieChart(pieChart,studentManager.getStudents());
     }
 
-    //  BINDING
+    //binding
     public void bindButton(Button b){
         b.prefWidthProperty().bind(sidePane.widthProperty());
         b.getStyleClass().add("sidebar-buttons");
@@ -211,32 +240,25 @@ public class Controller implements Initializable {
         promptLabel.setText(labelText);
         promptButton.setText(buttonText);
     }
-    private void promptPassword(){
+    private boolean promptPassword(){
         dialoguePane.setVisible(true);
         promptPane.setVisible(false);
         confirmPane.setVisible(true);
         System.out.println("start");
+        AtomicBoolean returnable = new AtomicBoolean(false);
         confirmPasswordButton.setOnAction(actionEvent -> {
             System.out.println("helo");
             correctPassword = checkPassword(confirmPasswordField.getText());
             if (correctPassword) {
                 dialoguePane.setVisible(false);
+                returnable.set(true);
             } else {
                 confirmPasswordField.setText("");
-                try {
-                    for(int i = 0; i < 3; i++) {
-                        confirmPasswordField.setStyle("-fx-border-color: -red");
-                        Thread.sleep(500);
-                        confirmPasswordField.setStyle("-fx-border-color: -fx-timberwolf");
-                        Thread.sleep(500);
-                    }
-                    dialoguePane.setVisible(false);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                dialoguePane.setVisible(false);
             }
         });
-        System.out.println("end");
+        System.out.println(returnable.get());
+        return returnable.get();
     }
 
     //  EVENT HANDLERS
@@ -256,7 +278,9 @@ public class Controller implements Initializable {
     //Attendance Pane
     public void onToggleIsPresentClick(){
         if(tableView.getSelectionModel().getSelectedIndex()!=-1) {
-            studentManager.setPresence(tableView.getSelectionModel().getSelectedIndex());
+            studentManager.setPresence(
+                    studentManager.getDb().getStudentIds().get(tableView.getSelectionModel().getSelectedIndex())
+            );
             tableView.getSelectionModel().clearSelection();
             tableView.refresh();
             updatePieChart();
@@ -279,27 +303,75 @@ public class Controller implements Initializable {
         updatePieChart();
     }
     public void onAddUserButtonClick(){
+        //TODO Change if statements to be formatted same as updateUser()
         if(!Objects.equals(addUserNameField.getText(), "") && !Objects.equals(addUserNameField.getText(), "")) {
-            //promptPassword();
-            String name = addUserNameField.getText();
-            int grade = Integer.parseInt(addUserGradeField.getText());
-            int studentid = Integer.parseInt(addUserStudentIdField.getText());
+            if(promptPassword()) {
+                String name = addUserNameField.getText();
+                int grade = Integer.parseInt(addUserGradeField.getText());
+                int studentid = Integer.parseInt(addUserStudentIdField.getText());
 
-            //Clear Table and Data
-            tableManager.getTable().getItems().removeAll();
-            tableManager.getData().removeAll(studentManager.getStudents());
+                //Clear Table and Data
+                tableManager.getTable().getItems().removeAll();
+                tableManager.getData().removeAll(studentManager.getStudents());
 
-            //Insert Record into Database and Array
-            studentManager.getDb().insertRecord(name, grade, studentid);
-            studentManager.addStudent(name, grade, studentid);
+                //Insert Record into Database and Array
+                studentManager.getDb().insertRecord(name, grade, studentid);
+                studentManager.addStudent(name, grade, studentid);
 
-            //Re-add to table and database
-            tableManager.getData().addAll(studentManager.getStudents());
-            tableManager.getTable().setItems(tableManager.getData());
+                //Re-add to table and database
+                tableManager.getData().addAll(studentManager.getStudents());
+                tableManager.getTable().setItems(tableManager.getData());
+            } else {
+                //invokePromptPane("Incorrect password", "Try Again");
+            }
         } else {
             invokePromptPane("Please fill in the boxes.", "Okay");
         }
         updateChart();
+    }
+    public void onUpdateUserButtonClick(){
+        System.out.println("hello");
+        if(Objects.equals(updateUserNameField.getText(), "") && Objects.equals(updateUserIdField.getText(),"")){
+            invokePromptPane("Please enter a user to be changed", "Okay");
+        }
+        String name = updateUserNameField.getText();
+        int id = Integer.parseInt(updateUserIdField.getText());
+        System.out.println(id);
+        String updatedInfo = updateUserChangeField.getText();
+        if(!Objects.equals(updatedInfo, "")){
+            tableManager.getTable().getItems().removeAll();
+            tableManager.getData().removeAll(studentManager.getStudents());
+            int key = studentManager.getDb().getStudentIds().indexOf(id);
+            if(isNumeric(updatedInfo) && updatedInfo.length() <= 2){
+                studentManager.getDb().updateRecord("grade",updatedInfo,true,key);
+                studentManager.updateStudent(key,
+                        studentManager.getDb().getUsers().get(key),
+                        Integer.parseInt(updatedInfo),
+                        studentManager.getDb().getStudentIds().get(key),
+                        studentManager.getStudents().get(key).isPresent()
+                );
+            } else if (isNumeric(updatedInfo)){
+                studentManager.getDb().updateRecord("studentid",updatedInfo,true,key);
+                studentManager.updateStudent(key,
+                        studentManager.getDb().getUsers().get(key),
+                        studentManager.getDb().getGrades().get(key),
+                        Integer.parseInt(updatedInfo),
+                        studentManager.getStudents().get(key).isPresent()
+                );
+            } else{
+                studentManager.getDb().updateRecord("name",updatedInfo,false,key);
+                studentManager.updateStudent(key,
+                        updatedInfo,
+                        studentManager.getDb().getGrades().get(key),
+                        studentManager.getDb().getStudentIds().get(key),
+                        studentManager.getStudents().get(key).isPresent()
+                );
+            }
+            tableManager.getData().addAll(studentManager.getStudents());
+            tableManager.getTable().setItems(tableManager.getData());
+        } else {
+            invokePromptPane("Please include updated information", "Okay");
+        }
     }
 
     //Settings Pane
@@ -320,11 +392,15 @@ public class Controller implements Initializable {
 
     //Scanner Pane
     public void onStopScanningButtonClick(){
-//        if(webcamManager.getDecoder().isScanning()){
-//            webcamManager.stopDecoding();
-//        } else {
-//            webcamManager.startDecoding();
-//        }
         webcamManager.getDecoder().invokeSingleScan();
+        if(webcamManager.getDecoder().getResult() != null){
+            int id = Integer.parseInt(webcamManager.getDecoder().getResult());
+            if(studentManager.isRegisteredId(id)) {
+                studentManager.setPresence(id);
+                tableView.getSelectionModel().clearSelection();
+                tableView.refresh();
+                updatePieChart();
+            }
+        }
     }
 }

@@ -20,7 +20,6 @@ public class ChartManager {
 
         for(Integer key: chartValues.keySet()){
             series.getData().add(new XYChart.Data<>(key.toString(), chartValues.get(key)));
-            System.out.println(key.toString()+ " : " + chartValues.get(key)); //TODO Debugging business
         }
         System.out.println();
         chart.getData().add(series);
