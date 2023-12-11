@@ -20,6 +20,7 @@ TODO: Unify code in manager classes
 TODO: Add parent class / interface?
 TODO: Define dialogue as Wrapper
 TODO: Add param notation to methods
+TODO: Format user input to prevent
 
 - Styling
 TODO: Make styling change color for true/false for isPresent()

@@ -134,9 +134,9 @@
                               <AnchorPane fx:id="removeUserPane" prefHeight="207.0" prefWidth="400.0">
                                  <children>
                                     <Label layoutX="176.0" layoutY="13.0" text="Remove User" underline="true" />
-                                    <Button fx:id="removeUserButton" layoutX="105.0" layoutY="164.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="218.0" text="Remove" />
+                                    <Button fx:id="removeUserButton" layoutX="105.0" layoutY="164.0" mnemonicParsing="false" onAction="#onRemoveUserButtonClick" prefHeight="33.0" prefWidth="218.0" text="Remove" />
                                     <TextField fx:id="removeUserNameField" layoutX="105.0" layoutY="59.0" prefHeight="26.0" prefWidth="217.0" promptText="Name (fLast)" />
-                                    <TextField fx:id="removeUserGradeField" layoutX="105.0" layoutY="109.0" prefHeight="26.0" prefWidth="217.0" promptText="UserId" />
+                                    <TextField fx:id="removeUserIdField" layoutX="105.0" layoutY="109.0" prefHeight="26.0" prefWidth="217.0" promptText="UserId" />
                                  </children>
                               </AnchorPane>
                            </children>

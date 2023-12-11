@@ -32,7 +32,8 @@ public class StudentManager {
     public void updateStudent(int key, String name, int grade, int studentId,boolean present){
         students.set(key, new Student(name,grade,studentId,present));
     }
-    public void removeStudent(String name, int grade){
+    public void removeStudent(int key){
+        students.remove(key);
     }
     public ArrayList<Student> getStudents(){
         return students;

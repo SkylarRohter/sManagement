@@ -102,7 +102,7 @@ public class Controller implements Initializable {
 
     @FXML private AnchorPane removeUserPane;
     @FXML private TextField removeUserNameField;
-    @FXML private TextField removeUserGradeField;
+    @FXML private TextField removeUserIdField;
     @FXML private Button removeUserButton;
 
     //Settings Pane
@@ -305,7 +305,7 @@ public class Controller implements Initializable {
     public void onAddUserButtonClick(){
         //TODO Change if statements to be formatted same as updateUser()
         if(!Objects.equals(addUserNameField.getText(), "") && !Objects.equals(addUserNameField.getText(), "")) {
-            if(promptPassword()) {
+//            if(promptPassword()) {
                 String name = addUserNameField.getText();
                 int grade = Integer.parseInt(addUserGradeField.getText());
                 int studentid = Integer.parseInt(addUserStudentIdField.getText());
@@ -321,27 +321,25 @@ public class Controller implements Initializable {
                 //Re-add to table and database
                 tableManager.getData().addAll(studentManager.getStudents());
                 tableManager.getTable().setItems(tableManager.getData());
-            } else {
-                //invokePromptPane("Incorrect password", "Try Again");
-            }
+//            } else {
+//                //invokePromptPane("Incorrect password", "Try Again");
+//            }
         } else {
             invokePromptPane("Please fill in the boxes.", "Okay");
         }
         updateChart();
     }
     public void onUpdateUserButtonClick(){
-        System.out.println("hello");
-        if(Objects.equals(updateUserNameField.getText(), "") && Objects.equals(updateUserIdField.getText(),"")){
+        if(Objects.equals(updateUserNameField.getText(), "") || Objects.equals(updateUserIdField.getText(),"")){
             invokePromptPane("Please enter a user to be changed", "Okay");
         }
         String name = updateUserNameField.getText();
         int id = Integer.parseInt(updateUserIdField.getText());
-        System.out.println(id);
+        int key = studentManager.getDb().getStudentIds().indexOf(id);
         String updatedInfo = updateUserChangeField.getText();
-        if(!Objects.equals(updatedInfo, "")){
+        if(studentManager.getDb().getUsers().get(key).equals(name)){
             tableManager.getTable().getItems().removeAll();
             tableManager.getData().removeAll(studentManager.getStudents());
-            int key = studentManager.getDb().getStudentIds().indexOf(id);
             if(isNumeric(updatedInfo) && updatedInfo.length() <= 2){
                 studentManager.getDb().updateRecord("grade",updatedInfo,true,key);
                 studentManager.updateStudent(key,
@@ -358,7 +356,7 @@ public class Controller implements Initializable {
                         Integer.parseInt(updatedInfo),
                         studentManager.getStudents().get(key).isPresent()
                 );
-            } else{
+            } else {
                 studentManager.getDb().updateRecord("name",updatedInfo,false,key);
                 studentManager.updateStudent(key,
                         updatedInfo,
@@ -369,8 +367,40 @@ public class Controller implements Initializable {
             }
             tableManager.getData().addAll(studentManager.getStudents());
             tableManager.getTable().setItems(tableManager.getData());
+            clearText(new TextField[]{updateUserNameField,updateUserIdField,updateUserChangeField});
         } else {
-            invokePromptPane("Please include updated information", "Okay");
+            invokePromptPane("Invalid User", "Try Again");
+        }
+    }
+    public void onRemoveUserButtonClick(){
+        if(Objects.equals(removeUserNameField.getText(), "") || Objects.equals(removeUserIdField.getText(),"")){
+            invokePromptPane("Please enter a user to be removed", "Okay");
+        } else if(removeUserIdField.getText().length() != 5){
+            invokePromptPane("Invalid student id", "Okay");
+        }else {
+            String name = removeUserNameField.getText();
+            String id = removeUserIdField.getText();
+            int key = studentManager.getDb().getStudentIds().indexOf(Integer.parseInt(id));
+            System.out.println(key);
+            if (studentManager.getDb().getUsers().get(key).equals(name)) {
+                tableManager.getTable().getItems().removeAll();
+                tableManager.getData().removeAll(studentManager.getStudents());
+
+                studentManager.getDb().deleteRecord(key);
+                studentManager.removeStudent(key);
+
+                tableManager.getData().addAll(studentManager.getStudents());
+                tableManager.getTable().setItems(tableManager.getData());
+
+                clearText(new TextField[]{removeUserIdField, removeUserNameField});
+            } else {
+                invokePromptPane("Invalid User", "Try Again");
+            }
+        }
+    }
+    private void clearText(TextField[] fields){
+        for(TextField label : fields){
+            label.setText("");
         }
     }
 

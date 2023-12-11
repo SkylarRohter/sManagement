@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="decode functionality">
+    <list default="true" id="6dcd2f82-af6e-48ac-9c84-c6c8abaa6c95" name="Changes" comment="decode functionality and updateUser() functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/Database/StudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/charts/ChartManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/functions/charts/ChartManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/Decoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/Decoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/WebcamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/novahc/smanagement/utils/WebcamManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/net/novahc/smanagement/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.todo" beforeDir="false" afterPath="$PROJECT_DIR$/todo.todo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +142,9 @@
       <workItem from="1701276400168" duration="10830000" />
       <workItem from="1701378992066" duration="9639000" />
       <workItem from="1701653529682" duration="3588000" />
-      <workItem from="1701719037168" duration="4905000" />
+      <workItem from="1701719037168" duration="10778000" />
+      <workItem from="1701897265527" duration="6632000" />
+      <workItem from="1702311595100" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="Changed window dimensions. (test commit)">
       <option name="closed" value="true" />
@@ -355,7 +355,8 @@
     <MESSAGE value="pre webcam commit" />
     <MESSAGE value="added webcam accessibility and qr/barcode decoder" />
     <MESSAGE value="centered webcamWrapper and added studentID to database and usermanagement" />
-    <option name="LAST_COMMIT_MESSAGE" value="centered webcamWrapper and added studentID to database and usermanagement" />
+    <MESSAGE value="decode functionality and updateUser() functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="decode functionality and updateUser() functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

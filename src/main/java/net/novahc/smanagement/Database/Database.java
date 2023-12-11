@@ -36,6 +36,15 @@ public class Database {
     }
 
     private ArrayList<Integer> studentIds;
+
+    public void setLastId(int lastId) {
+        this.lastId = lastId;
+    }
+
+    public int getLastId() {
+        return lastId;
+    }
+
     private int lastId;
     public void addUser(String name, int grade, int studentId){
         lastId++;
@@ -52,6 +61,21 @@ public class Database {
     }
     public void updateStudentId(int newStudentId, int id){
         getStudentIds().set(id,newStudentId);
+    }
+    public void removeUser(int key){
+        getUsers().remove(key);
+        getGrades().remove(key);
+        getStudentIds().remove(key);
+        System.out.println(ids);
+        for(int i = 0; i < ids.size(); i++){
+            if(ids.get(i)>key){
+                ids.set(i,ids.get(i)-1);
+                updateIds(i);
+            }
+        }
+        getIds().remove(key);
+        lastId = getIds().size()-1;
+        System.out.println(ids);
     }
 
     public Database(String username, String password, String url, String tableName){
@@ -86,13 +110,15 @@ public class Database {
         } catch (Exception e) {
             System.out.println("Error connecting to database.");
         }
-        lastId = getIds().get(getIds().size()-1)+1;
+        lastId = getIds().size()-1;
+        System.out.println(getIds());
+        System.out.println(lastId);
     }
     public void insertRecord(String name, int grade, int studentId){
         String sql = "INSERT INTO "+tableName+" (id, name, grade, studentid) VALUES (?, ?, ?, ?);";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, lastId);
+            preparedStatement.setInt(1, lastId+1);
             preparedStatement.setString(2,name);
             preparedStatement.setInt(3, grade);
             preparedStatement.setInt(4, studentId);
@@ -148,6 +174,43 @@ public class Database {
             printSQLException(e);
         }
 
+    }
+    public void deleteRecord(int key){
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String deleteQuery = "DELETE FROM " + tableName + " WHERE id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+                preparedStatement.setInt(1, key);
+                int rowsAffected = preparedStatement.executeUpdate();
+                if (rowsAffected > 0) {
+                    removeUser(key);
+                    System.out.println("Row deleted successfully!");
+                } else {
+                    System.out.println("No rows deleted. Verify the row ID and column names.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * @param lastKey
+     */
+    private void updateIds(int lastKey){
+        try (Connection connection  = DriverManager.getConnection(url, username, password)) {
+            String sql = "UPDATE " + tableName + " SET id = ? WHERE id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, lastKey - 1);
+                preparedStatement.setInt(2, lastKey);
+                int rows = preparedStatement.executeUpdate();
+                if(rows>0){
+                    System.out.println("Yay it worked");
+                } else {
+                    throw new SQLException();
+                }
+            }
+        } catch (SQLException e){
+            printSQLException(e);
+        }
     }
     public void printSQLException(SQLException ex){
         for(Throwable e: ex){
