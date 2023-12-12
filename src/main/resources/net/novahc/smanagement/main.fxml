@@ -96,10 +96,10 @@
             </FlowPane>
             <FlowPane fx:id="umPane" prefHeight="606.0" prefWidth="687.0">
                <children>
-                  <TableView prefHeight="606.0" prefWidth="286.0">
+                  <TableView fx:id="idTable" prefHeight="606.0" prefWidth="286.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                      <TableColumn fx:id="studentId" prefWidth="75.0" text="StudentId" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

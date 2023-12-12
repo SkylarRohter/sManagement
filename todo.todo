@@ -1,7 +1,4 @@
 - User management pane
-TODO: Finish UpdateUser functionality
-TODO: Finish RemoveUser functionality
-TODO: Fill empty section (chart?)
 
 - Scanner Pane
 
@@ -20,7 +17,7 @@ TODO: Unify code in manager classes
 TODO: Add parent class / interface?
 TODO: Define dialogue as Wrapper
 TODO: Add param notation to methods
-TODO: Format user input to prevent
+TODO: Format user input to prevent errors (SQL commands in textboxes, incorrect formatting, etc)
 
 - Styling
 TODO: Make styling change color for true/false for isPresent()
@@ -29,4 +26,4 @@ TODO: Make error dialogue wrapper class and define similar to monkeytype (https:
 - Finishing
 TODO:
 TODO: Finish README.md
-TODO: Make repository a deployable application
+TODO: Make repository a deployable application (artifact jar)

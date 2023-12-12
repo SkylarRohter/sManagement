@@ -58,9 +58,9 @@ public class Controller implements Initializable {
     //ATTENDANCE PANE
     @FXML private FlowPane attPane;
     @FXML private TableView<Student> tableView;
-    @FXML TableColumn<Student, String> name;
-    @FXML TableColumn<Student, Integer> age;
-    @FXML TableColumn<Student, Boolean> present;
+    @FXML private TableColumn<Student, String> name;
+    @FXML private TableColumn<Student, Integer> age;
+    @FXML private TableColumn<Student, Boolean> present;
 
     @FXML private Button toggleIsPresent;
     @FXML private Button updateTable;
@@ -87,6 +87,10 @@ public class Controller implements Initializable {
 
 
     //UserManagement Pane
+    @FXML private TableView<Student> idTable;
+    @FXML private TableColumn <Student, String> nameColumn;
+    @FXML private TableColumn<Student, Integer> studentId;
+
     @FXML private AnchorPane addUserPane;
     @FXML private TextField addUserNameField;
     @FXML private TextField addUserStudentIdField;
@@ -162,6 +166,7 @@ public class Controller implements Initializable {
             initInputValues[3] = tableNameField.getText();
             studentManager.setInitInputValues(initInputValues);
             tableManager.init(name,age,present);
+            tableManager.initOther(nameColumn,studentId,idTable);
             chartManager.initBarChart(presentChart,"Grade","# Present", studentManager.getStudentTotals());
             chartManager.initPieChart(pieChart,studentManager.getStudents());
             urlField.setDisable(true);
@@ -191,7 +196,6 @@ public class Controller implements Initializable {
         Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
         return pattern.matcher(str).matches();
     }
-    //updaters
     public void updateChart(){
         chartManager.updateBarChart(presentChart, studentManager.getStudentTotals());
     }
@@ -309,18 +313,14 @@ public class Controller implements Initializable {
                 String name = addUserNameField.getText();
                 int grade = Integer.parseInt(addUserGradeField.getText());
                 int studentid = Integer.parseInt(addUserStudentIdField.getText());
-
-                //Clear Table and Data
-                tableManager.getTable().getItems().removeAll();
-                tableManager.getData().removeAll(studentManager.getStudents());
+                tableManager.removeAllTableData();
 
                 //Insert Record into Database and Array
                 studentManager.getDb().insertRecord(name, grade, studentid);
                 studentManager.addStudent(name, grade, studentid);
 
                 //Re-add to table and database
-                tableManager.getData().addAll(studentManager.getStudents());
-                tableManager.getTable().setItems(tableManager.getData());
+                tableManager.addAllTableData();
 //            } else {
 //                //invokePromptPane("Incorrect password", "Try Again");
 //            }
@@ -338,8 +338,7 @@ public class Controller implements Initializable {
         int key = studentManager.getDb().getStudentIds().indexOf(id);
         String updatedInfo = updateUserChangeField.getText();
         if(studentManager.getDb().getUsers().get(key).equals(name)){
-            tableManager.getTable().getItems().removeAll();
-            tableManager.getData().removeAll(studentManager.getStudents());
+            tableManager.removeAllTableData();
             if(isNumeric(updatedInfo) && updatedInfo.length() <= 2){
                 studentManager.getDb().updateRecord("grade",updatedInfo,true,key);
                 studentManager.updateStudent(key,
@@ -365,8 +364,7 @@ public class Controller implements Initializable {
                         studentManager.getStudents().get(key).isPresent()
                 );
             }
-            tableManager.getData().addAll(studentManager.getStudents());
-            tableManager.getTable().setItems(tableManager.getData());
+            tableManager.addAllTableData();
             clearText(new TextField[]{updateUserNameField,updateUserIdField,updateUserChangeField});
         } else {
             invokePromptPane("Invalid User", "Try Again");
@@ -383,15 +381,10 @@ public class Controller implements Initializable {
             int key = studentManager.getDb().getStudentIds().indexOf(Integer.parseInt(id));
             System.out.println(key);
             if (studentManager.getDb().getUsers().get(key).equals(name)) {
-                tableManager.getTable().getItems().removeAll();
-                tableManager.getData().removeAll(studentManager.getStudents());
-
+                tableManager.removeAllTableData();
                 studentManager.getDb().deleteRecord(key);
                 studentManager.removeStudent(key);
-
-                tableManager.getData().addAll(studentManager.getStudents());
-                tableManager.getTable().setItems(tableManager.getData());
-
+                tableManager.addAllTableData();
                 clearText(new TextField[]{removeUserIdField, removeUserNameField});
             } else {
                 invokePromptPane("Invalid User", "Try Again");

@@ -54,6 +54,9 @@ public class Student {
     public IntegerProperty gradeProperty() {
         return new SimpleIntegerProperty(grade);
     }
+    public IntegerProperty studentIdProperty() {
+        return new SimpleIntegerProperty(studentId);
+    }
     public BooleanProperty presentProperty() {
         return new SimpleBooleanProperty(present);
     }
